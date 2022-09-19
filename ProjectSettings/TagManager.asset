@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PathBound Beacon
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2873516269
+    locked: 0
+  - name: Midground
+    uniqueID: 1743733939
+    locked: 0
+  - name: Foreground
+    uniqueID: 3401194475
     locked: 0
