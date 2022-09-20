@@ -10,12 +10,12 @@ public class EnemyPathScript : MonoBehaviour
     [SerializeField]
     private float speed;
     [SerializeField]
-    private string enemyname;
+    private string enemyName;
 
 
     [SerializeField]
     private Transform[] pathBeacons;
-    private int cur = 0;
+    private int curBeacon = 0;
 
     public int GetHealth()
     {
@@ -24,7 +24,7 @@ public class EnemyPathScript : MonoBehaviour
 
     public string GetName()
     {
-        return enemyname;
+        return enemyName;
     }
 
     private void Awake()
@@ -44,14 +44,14 @@ public class EnemyPathScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position != pathBeacons[cur].position)
+        if (transform.position != pathBeacons[curBeacon].position)
         {
-            Vector2 p = Vector2.MoveTowards(transform.position, pathBeacons[cur].position, speed);
+            Vector2 p = Vector2.MoveTowards(transform.position, pathBeacons[curBeacon].position, speed);
             GetComponent<Rigidbody2D>().MovePosition(p);
         }
-        else cur = (cur + 1) % pathBeacons.Length;
+        else curBeacon = (curBeacon + 1) % pathBeacons.Length;
 
-        Vector2 dir = pathBeacons[cur].position - transform.position;
+        Vector2 dir = pathBeacons[curBeacon].position - transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
