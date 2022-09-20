@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 632452131536784467}
   - component: {fileID: 632452131536784464}
   - component: {fileID: 632452131536784471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PLACEHOLDER
   m_TagString: Respawn
   m_Icon: {fileID: 0}

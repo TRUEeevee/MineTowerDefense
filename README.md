@@ -1,2 +1,2 @@
 # MineTowerDefense
-A Minecraft based Tower Defense made by a couple of losers wanting to have some fun!
+A project where 2 pro gamers make a tower defense
