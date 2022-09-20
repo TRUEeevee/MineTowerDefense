@@ -23,6 +23,7 @@ public class circleTest : MonoBehaviour
     void FixedUpdate()
     {
         returnColliders = Physics2D.OverlapCircleAll(transform.position, 6f, layer);
+        print(layer);
     }
 
     void OnDrawGizmos() {
