@@ -12,7 +12,7 @@ public class circleTest : MonoBehaviour
     void Start()
     {
         layer = LayerMask.GetMask("Tower");
-        print(layer);
+        print(layer + "" + layer);
     }
 
     // Update is called once per frame
