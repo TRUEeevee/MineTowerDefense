@@ -714,6 +714,7 @@ MonoBehaviour:
   towerName: Bow and Arrow tower
   attackSpeed: 0
   attackDamage: 0
+  furthestEnemy: {fileID: 0}
   range: 4
   enemyLayer:
     serializedVersion: 2
@@ -738,6 +739,7 @@ MonoBehaviour:
   towerName: 
   attackSpeed: 0
   attackDamage: 0
+  furthestEnemy: {fileID: 0}
   range: 0
   enemyLayer:
     serializedVersion: 2
@@ -806,7 +808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317768347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.04, y: -0.89, z: 0}
+  m_LocalPosition: {x: -0.44, y: -1, z: 0}
   m_LocalScale: {x: 0.7872481, y: 0.7872481, z: 0.7872481}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1360,7 +1362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667548216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.92, y: -0.15, z: 0}
+  m_LocalPosition: {x: -1.38, y: 0.89, z: 0}
   m_LocalScale: {x: 1.7571226, y: 1.7571226, z: 1.7571226}
   m_ConstrainProportionsScale: 0
   m_Children: []

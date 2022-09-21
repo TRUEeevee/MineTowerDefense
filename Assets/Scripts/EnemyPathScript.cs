@@ -11,9 +11,9 @@ public class EnemyPathScript : MonoBehaviour
     private float speed;
     [SerializeField]
     private string enemyName;
-    
-    [SerializeField]
+
     private const float trackLength = 60f;
+    [SerializeField]
     private float distanceTraveled = 0;
     private float prevX, prevY, curX, curY;
 
@@ -29,6 +29,11 @@ public class EnemyPathScript : MonoBehaviour
     public string GetName()
     {
         return enemyName;
+    }
+
+    public float GetDistance()
+    {
+        return distanceTraveled;
     }
 
     private void Awake()

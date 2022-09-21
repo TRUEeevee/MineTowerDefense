@@ -22,6 +22,9 @@ public class TowerScript : MonoBehaviour
 
     [Header("Targetting Variables")]
     [SerializeField]
+    [Tooltip("Reference to enemy tower should be targeting")]
+    private GameObject furthestEnemy;
+    [SerializeField]
     [Tooltip("View radius of tower")]
     private int range;
     [SerializeField]
@@ -48,9 +51,20 @@ public class TowerScript : MonoBehaviour
     }
     private void FOV() {
         rangeCheck = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
-
+        int furthestTargetIndex = 0;
         if (rangeCheck.Length > 0) {
-            Transform target = rangeCheck[0].transform;
+            // assign target to enemy furthest along the path
+            for (int i = 1; i < rangeCheck.Length; i++) {
+                if (enemyVisible(rangeCheck[i].gameObject.transform)) 
+                {
+                    if (rangeCheck[i].GetComponentInParent<EnemyPathScript>().GetDistance() > rangeCheck[furthestTargetIndex].GetComponentInParent<EnemyPathScript>().GetDistance())
+                    {
+                        furthestTargetIndex = i;
+                    }
+                }
+            }
+            furthestEnemy = rangeCheck[furthestTargetIndex].gameObject;
+            Transform target = rangeCheck[furthestTargetIndex].transform;
             Vector2 directionToTarget = (target.position - transform.position).normalized;
 
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
@@ -65,13 +79,24 @@ public class TowerScript : MonoBehaviour
         }
     }
 
+    private bool enemyVisible(Transform potentialTarget)
+    {
+        Vector2 directionToTarget = (potentialTarget.position - transform.position).normalized;
+        float distanceToTarget = Vector2.Distance(transform.position, potentialTarget.position);
+        if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleLayer)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, range);
         
         if (CanSeeEnemy) {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, rangeCheck[0].transform.position);
+            Gizmos.DrawLine(transform.position, furthestEnemy.transform.position);
         }
     }
 
