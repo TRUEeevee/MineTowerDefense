@@ -10,6 +10,22 @@ public class BowTowerScript : MonoBehaviour
     void Start()
     {
         towerScript = GetComponentInParent<TowerScript>();
+        StartCoroutine(AttackRoutine());
+    }
+
+    private IEnumerator AttackRoutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        while (true)
+        {
+            yield return wait;
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        
     }
 
     // Update is called once per frame

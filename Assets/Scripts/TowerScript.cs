@@ -23,7 +23,7 @@ public class TowerScript : MonoBehaviour
     [Header("Targetting Variables")]
     [SerializeField]
     [Tooltip("Reference to enemy tower should be targeting")]
-    private GameObject furthestEnemy;
+    public GameObject furthestEnemy;
     [SerializeField]
     [Tooltip("View radius of tower")]
     private int range;
