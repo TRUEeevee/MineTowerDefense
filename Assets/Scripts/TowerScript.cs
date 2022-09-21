@@ -13,14 +13,17 @@ public class TowerScript : MonoBehaviour
     private int price;
     [SerializeField]
     private string towerName;
+    [SerializeField]
+    [Tooltip("How many attacks per second tower can perform")]
+    private float attackSpeed;
+    [SerializeField]
+    [Tooltip("Damage of primary attack/projectile")]
+    private int attackDamage;
 
     [Header("Targetting Variables")]
     [SerializeField]
     [Tooltip("View radius of tower")]
     private int range;
-    [SerializeField]
-    [Tooltip("Angle of field of view of tower")]
-    [Range(1, 360)] private float angle = 360f;
     [SerializeField]
     private LayerMask enemyLayer;
     [SerializeField]

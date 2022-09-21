@@ -154,6 +154,52 @@ Transform:
   m_Father: {fileID: 1618392931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &107443204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107443206}
+  - component: {fileID: 107443205}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &107443205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107443204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d52b7ec900587c40ba29bfdc0f3aa92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  money: 0
+--- !u!4 &107443206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107443204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.20163563, y: 1.6045305, z: -0.03367585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144449007
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +690,7 @@ GameObject:
   - component: {fileID: 1317768349}
   - component: {fileID: 1317768348}
   - component: {fileID: 1317768352}
+  - component: {fileID: 1317768353}
   m_Layer: 7
   m_Name: BowTower
   m_TagString: Untagged
@@ -665,8 +712,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 0
   towerName: Bow and Arrow tower
+  attackSpeed: 0
+  attackDamage: 0
   range: 4
-  angle: 360
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -688,8 +736,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 0
   towerName: 
+  attackSpeed: 0
+  attackDamage: 0
   range: 0
-  angle: 360
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -780,6 +829,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.1999999
+--- !u!114 &1317768353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317768347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd49e26669edf9d4384167365f95ffd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerScript: {fileID: 0}
 --- !u!1 &1345942972
 GameObject:
   m_ObjectHideFlags: 0
