@@ -76,6 +76,8 @@ public class TowerScript : MonoBehaviour
             }
         } else if (CanSeeEnemy) {
             CanSeeEnemy = false;
+
+          
         }
     }
 
@@ -93,7 +95,6 @@ public class TowerScript : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, range);
-        
         if (CanSeeEnemy) {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, furthestEnemy.transform.position);

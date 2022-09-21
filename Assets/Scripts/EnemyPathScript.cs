@@ -5,14 +5,20 @@ using UnityEngine;
 public class EnemyPathScript : MonoBehaviour
 {
     //Handles the very basic moving along the path, what speed, health, and enemy name.
+    [Header("Enemy Related Variables")]
     [SerializeField]
-    private int health;
+    private int maxHealth;
+    [SerializeField]
+    private int currentHealth;
     [SerializeField]
     private float speed;
     [SerializeField]
     private string enemyName;
 
+    [Header("Pathing Variables")]
+    [Tooltip("Possibly for debugging only")]
     private const float trackLength = 60f;
+
     [SerializeField]
     private float distanceTraveled = 0;
     private float prevX, prevY, curX, curY;
@@ -23,7 +29,7 @@ public class EnemyPathScript : MonoBehaviour
 
     public int GetHealth()
     {
-        return health;
+        return currentHealth;
     }
 
     public string GetName()
@@ -43,6 +49,8 @@ public class EnemyPathScript : MonoBehaviour
         prevX = curX;
         curY = transform.position.y;
         prevY = curY;
+
+        currentHealth = maxHealth;
     }
 
     private void FindPath()
@@ -77,16 +85,31 @@ public class EnemyPathScript : MonoBehaviour
         }
 
         Vector2 dir = pathBeacons[curBeacon].position - transform.position;
+
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Kill();
+        TakeDamage(collision.gameObject.GetComponent<ArrowScript>().damage);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        //calculated IF the target is invulnerable
+
+        //calculates armor values?
+
+        //deals damage to the objects HP
+        currentHealth -= damage;
+        print(currentHealth + " should take " + damage);
+
     }
     private void Kill()
     {
-        print(distanceTraveled);
-        Debug.Log("An Enemy has gotten past the defense");
         Destroy(gameObject);
     }
 }

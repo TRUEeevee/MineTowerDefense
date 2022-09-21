@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 632452131536784471}
   m_Layer: 6
   m_Name: PLACEHOLDER
-  m_TagString: Respawn
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,9 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd943c47c02a2347becd3d1f9395d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 100
+  currentHealth: 0
   speed: 0.05
-  enemyname: PlaceHolder
+  enemyName: 
+  distanceTraveled: 0
   pathBeacons:
   - {fileID: 0}
   - {fileID: 0}
