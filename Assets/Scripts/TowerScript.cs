@@ -13,12 +13,7 @@ public class TowerScript : MonoBehaviour
     private int price;
     [SerializeField]
     private string towerName;
-    [SerializeField]
-    [Tooltip("How many attacks per second tower can perform")]
-    private float attackSpeed;
-    [SerializeField]
-    [Tooltip("Damage of primary attack/projectile")]
-    private int attackDamage;
+    
 
     [Header("Targetting Variables")]
     [SerializeField]
@@ -95,10 +90,10 @@ public class TowerScript : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, range);
-        if (CanSeeEnemy) {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, furthestEnemy.transform.position);
-        }
+        // if (CanSeeEnemy) {
+        //     Gizmos.color = Color.red;
+        //     Gizmos.DrawLine(transform.position, furthestEnemy.transform.position);
+        // }
     }
 
     public int GetPrice()

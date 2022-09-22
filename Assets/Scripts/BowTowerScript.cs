@@ -11,9 +11,17 @@ public class BowTowerScript : MonoBehaviour
     private GameObject arrow;
 
     [SerializeField]
-    private int damage;
+    [Tooltip("Damage of primary attack/projectile")]
+    private int attackDamage;
 
-    private int x;
+    [SerializeField]
+    [Tooltip("How many attacks per second tower can perform")]
+    private float attackSpeed;
+
+    [SerializeField]
+    [Tooltip("How many enemies the projectile goes through")]
+    private int pierceNum;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,29 +32,28 @@ public class BowTowerScript : MonoBehaviour
     private IEnumerator AttackRoutine()
     {
 
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        WaitForSeconds wait = new WaitForSeconds(1 / attackSpeed);
         
         while (true)
         {
-            yield return wait;
-            if(towerScript.CanSeeEnemy)
+            if (towerScript.CanSeeEnemy && towerScript.furthestEnemy)
                 Attack();
+
+            yield return wait;
         }
     }
 
     private void Attack()
     {
-
-        //instanciate projectile
-        GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity);
-        projectile.GetComponent<ArrowScript>().damage = GetDamage();
-        //The bullet itself will have a script for its colission and calls a damage function on the enemy.
+        // if (towerScript.furthestEnemy) {
+             //instanciate projectile
+            GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity);
+            projectile.GetComponent<ArrowScript>().damage = attackDamage;
+            projectile.GetComponent<ArrowScript>().pierceNum = pierceNum;
+            //The bullet itself will have a script for its colission and calls a damage function on the enemy.
+        // }
     }
 
-    private int GetDamage()
-    {
-        return damage;
-    }
 
 
 

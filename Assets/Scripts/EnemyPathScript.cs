@@ -105,7 +105,6 @@ public class EnemyPathScript : MonoBehaviour
 
         //deals damage to the objects HP
         currentHealth -= damage;
-        print(currentHealth + " should take " + damage);
 
     }
     private void Kill()
