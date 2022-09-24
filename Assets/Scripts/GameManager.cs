@@ -16,15 +16,22 @@ public class GameManager : MonoBehaviour
     [Tooltip("Amount of health player has, game ends when this reaches 0")]
     [Range(0, 1000)] public int health;
 
+    [SerializeField]
     [Tooltip("Amount of currency used to build/upgrade towers. Will (maybe) be replaced by resources in the future")]
-    public int money;
+    private int startMoney;
+    [SerializeField]
+    private int curMoney;
 
 
+    public int GetMoney()
+    {
+        return curMoney;
+    }
     // Start is called before the first frame update
     void Start()
     {
         // money set amount different based on difficulty?
-        money = 500;
+        curMoney = startMoney;
     }
 
     // Update is called once per frame
