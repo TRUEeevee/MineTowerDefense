@@ -18,6 +18,7 @@ public class PathParent : MonoBehaviour
         return PathwayBeacons;
     }
 
+    // NOTE: collider radius set to .65 for good effect for checking if tower was on path
     public bool onPath(Transform tower) {
         LayerMask placing = LayerMask.GetMask("Placing");
         // iterate through array, using i and i+1 index for linecasting, which is why i < length - 1 instead of just length

@@ -16,6 +16,9 @@ public class dummyTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        path.onPath(transform);
+        if (path.onPath(transform))
+            GetComponent<SpriteRenderer>().color = Color.red;
+        else 
+            GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
