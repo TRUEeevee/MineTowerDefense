@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathParent : MonoBehaviour
+public class MapController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Array that holds beacons in order of traversal for the map")]
     private Transform[] PathwayBeacons;
-    [SerializeField]
-    [Tooltip("Array that holds all vectors that path consists of")]
 
 
 
@@ -19,7 +17,7 @@ public class PathParent : MonoBehaviour
     }
 
     // NOTE: collider radius set to .65 for good effect for checking if tower was on path
-    public bool onPath(Transform tower) {
+    public bool onPath() {
         LayerMask placing = LayerMask.GetMask("Placing");
         // iterate through array, using i and i+1 index for linecasting, which is why i < length - 1 instead of just length
         for (int i = 0; i < PathwayBeacons.Length - 1; i++) {
@@ -28,5 +26,18 @@ public class PathParent : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public bool onObstacle(Transform tower) {
+        LayerMask obstacle = LayerMask.GetMask("Obstacle", "Tower");
+        float radius = tower.localScale.x * tower.GetComponent<CircleCollider2D>().radius;
+        if (Physics2D.OverlapCircle(tower.position, radius, obstacle)) {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanPlaceTower(Transform tower) {
+        return !(onPath() || onObstacle(tower));
     }
 }
