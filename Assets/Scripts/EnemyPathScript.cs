@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Collections;
 
 public class EnemyPathScript : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class EnemyPathScript : MonoBehaviour
 
     private void Awake()
     {
-        FindPath();
+        pathBeacons = FindObjectOfType<PathParent>().GetPathwayBeacons();
         curX = transform.position.x;
         prevX = curX;
         curY = transform.position.y;
@@ -53,15 +54,16 @@ public class EnemyPathScript : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void FindPath()
-    {
-        int x = 0;
-        foreach (Transform item in FindObjectOfType<PathParent>().GetPathwayBeacons())
-        {
-            pathBeacons[x] = item;
-            x++;
-        }
-    }
+    // private void FindPath()
+    // {
+    //     CollectionBase.Copy(FindObjectOfType<PathParent>().GetPathwayBeacons(), pathBeacons);
+    //     int x = 0;
+    //     foreach (Transform item in FindObjectOfType<PathParent>().GetPathwayBeacons())
+    //     {
+    //         pathBeacons[x] = item;
+    //         x++;
+    //     }
+    // }
 
     void FixedUpdate()
     {

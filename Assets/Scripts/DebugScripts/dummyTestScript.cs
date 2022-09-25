@@ -2,31 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class circleTest : MonoBehaviour
+public class dummyTestScript : MonoBehaviour
 {
-    [SerializeField]
-    LayerMask layer;
-    [SerializeField]
-    public Collider2D[] returnColliders;
+    public PathParent path;
+    public Transform[] beacons;
     // Start is called before the first frame update
     void Start()
     {
-        layer = LayerMask.GetMask("Tower");
+        path = FindObjectOfType<PathParent>();
+        beacons = path.GetPathwayBeacons();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void FixedUpdate()
-    {
-        returnColliders = Physics2D.OverlapCircleAll(transform.position, 6f, layer);
-    }
-
-    void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(transform.position, 6f);
-
+        path.onPath(transform);
     }
 }
