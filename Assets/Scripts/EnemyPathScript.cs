@@ -80,6 +80,15 @@ public class EnemyPathScript : MonoBehaviour
         if (currentHealth <= 0)
         {
             Kill();
+            //add money
+            //proc on death effects
+
+        }
+
+        if (transform.position == pathBeacons[pathBeacons.Length - 1].position)
+        {
+            Kill();
+            //lose a life
         }
     }
 
@@ -87,6 +96,7 @@ public class EnemyPathScript : MonoBehaviour
     {
         TakeDamage(collision.gameObject.GetComponent<ArrowScript>().damage);
     }
+
 
     public void TakeDamage(int damage)
     {
@@ -96,6 +106,8 @@ public class EnemyPathScript : MonoBehaviour
 
         //deals damage to the objects HP
         currentHealth -= damage;
+
+        //sets animation trigger for take damage
 
     }
     private void Kill()
