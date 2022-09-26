@@ -25,15 +25,16 @@ public class ArrowScript : MonoBehaviour
         towerScript = FindObjectOfType<TowerScript>();
         if (!towerScript.furthestEnemy) {
             Destroy(gameObject);
+        } else {
+            target = towerScript.furthestEnemy.transform.position;
+            startPosition = towerScript.GetComponentInParent<Transform>().position;
+
+            gameObject.transform.LookAt(towerScript.furthestEnemy.transform);
+            transform.localRotation = Quaternion.Euler(0, 0, transform.rotation.z);
+
+            Destroy(gameObject, 2f);
         }
-        target = towerScript.furthestEnemy.transform.position;
         
-        startPosition = towerScript.GetComponentInParent<Transform>().position;
-
-        gameObject.transform.LookAt(towerScript.furthestEnemy.transform);
-        transform.localRotation = Quaternion.Euler(0, 0, transform.rotation.z);
-
-        Destroy(gameObject, 2f);
     }
 
     void Start()
