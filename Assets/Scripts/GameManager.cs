@@ -22,11 +22,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int curMoney;
 
+    [SerializeField]
+    [Tooltip("Whether the player is currently placing a tower or not")]
+    public bool placing = false;
+
 
     public int GetMoney()
     {
         return curMoney;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +40,8 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+
     }
 }

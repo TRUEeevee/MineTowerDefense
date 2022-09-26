@@ -36,7 +36,8 @@ public class BowTowerScript : MonoBehaviour
         
         while (true)
         {
-            if (towerScript.CanSeeEnemy && towerScript.furthestEnemy)
+            // print("layer is" + gameObject.layer + " and get mask is " + LayerMask.GetMask("Tower"));
+            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy)
                 Attack();
 
             yield return wait;

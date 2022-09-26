@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PathBound Beacon
   - Enemy
+  - BowTower
+  - SwordTower
+  - GrieferTower
   layers:
   - Default
   - TransparentFX

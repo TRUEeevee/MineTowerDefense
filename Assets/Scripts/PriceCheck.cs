@@ -21,6 +21,7 @@ public class PriceCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Button>().interactable = gm.GetMoney() >= towerPrice;
+        if (!gm.placing)
+            GetComponent<Button>().interactable = gm.GetMoney() >= towerPrice;
     }
 }
