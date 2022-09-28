@@ -25,7 +25,7 @@ public class BowTowerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        towerScript = FindObjectOfType<TowerScript>();  // does this just replace .this ?
+        towerScript = GetComponent<TowerScript>();
         StartCoroutine(AttackRoutine());
     }
 
@@ -48,13 +48,17 @@ public class BowTowerScript : MonoBehaviour
     {
         // if (towerScript.furthestEnemy) {
              //instanciate projectile
-            GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity);
-            projectile.GetComponent<ArrowScript>().damage = attackDamage;
-            projectile.GetComponent<ArrowScript>().pierceNum = pierceNum;
+        GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity);
+        projectile.GetComponent<ArrowScript>().towerScript = towerScript;
+        projectile.GetComponent<ArrowScript>().damage = attackDamage;
+        projectile.GetComponent<ArrowScript>().pierceNum = pierceNum;
             //The bullet itself will have a script for its colission and calls a damage function on the enemy.
         // }
     }
 
+    void Update() {
+        // print(towerScript.GetPrice());
+    }
 
 
 

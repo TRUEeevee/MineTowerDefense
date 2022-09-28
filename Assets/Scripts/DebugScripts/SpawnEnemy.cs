@@ -10,7 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     private Transform spawnLocation;
 
     //this script is COMPLETELY debug, you can use it for anything including tests to make sure your code is performing how you want it!
-   public void SpawnTheEnemy()
+    public void SpawnTheEnemy()
     {
         Instantiate(enemyToSpawn, spawnLocation);
     }

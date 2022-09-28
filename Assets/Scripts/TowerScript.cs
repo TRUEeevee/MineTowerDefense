@@ -26,7 +26,8 @@ public class TowerScript : MonoBehaviour
     private LayerMask enemyLayer;
     [SerializeField]
     private LayerMask obstacleLayer;
-    public bool CanSeeEnemy {get; private set; }    // any script can read this value, only this script can set the value
+    [SerializeField]
+    public bool CanSeeEnemy; // {get; private set; }    // any script can read this value, only this script can set the value
     [SerializeField]
     private Collider2D[] rangeCheck;
     void Start()
@@ -71,7 +72,7 @@ public class TowerScript : MonoBehaviour
             }
         } else if (CanSeeEnemy) {
             CanSeeEnemy = false;
-
+            furthestEnemy = null;
           
         }
     }

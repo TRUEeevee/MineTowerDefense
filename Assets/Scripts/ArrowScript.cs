@@ -12,17 +12,16 @@ public class ArrowScript : MonoBehaviour
     public int pierceNum;
 
     public Vector3 target;
-    private TowerScript towerScript;
+    public TowerScript towerScript;
     private BowTowerScript bowTower;
     private Rigidbody2D rb;
     private Vector3 angle;
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        towerScript = FindObjectOfType<TowerScript>();
         if (!towerScript.furthestEnemy) {
             Destroy(gameObject);
         } else {
@@ -34,14 +33,11 @@ public class ArrowScript : MonoBehaviour
 
             Destroy(gameObject, 2f);
         }
-        
-    }
 
-    void Start()
-    {
         angle = target - transform.position;
         float rotationAngle = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg - 0f;
         rb.rotation = rotationAngle;
+        
     }
 
     // Update is called once per frame
