@@ -1,0 +1,45 @@
+[
+    {
+        "EnemyType": "Creeper",
+        "Count": "2",
+        "SpacingDelay": "0.1",
+        "ProcessDelay": "0.0"
+    },
+    {
+        "EnemyType": "Creeper",
+        "Count": "2",
+        "SpacingDelay": "0.1",
+        "ProcessDelay": "0.0"
+    },
+    {
+        "EnemyType": "Creeper",
+        "Count": "2",
+        "SpacingDelay": "0.1",
+        "ProcessDelay": "0.0"
+    },
+    {
+        "EnemyType": "Creeper",
+        "Count": "2",
+        "SpacingDelay": "0.1",
+        "ProcessDelay": "0.0"
+    },
+    {
+        "EnemyType": "Creeper",
+        "Count": "2",
+        "SpacingDelay": "0.1",
+        "ProcessDelay": "0.0"
+    }
+] },
+    {
+        "EnemyType": "Skeleton",
+        "Count": "6",
+        "SpacingDelay": "0.1",
+        "ProcessDelay": "0.0"
+    },
+    {
+        "EnemyType": "Skeleton",
+        "Count": "6",
+        "SpacingDelay": "0.5",
+        "ProcessDelay": "0.375"
+    }
+]

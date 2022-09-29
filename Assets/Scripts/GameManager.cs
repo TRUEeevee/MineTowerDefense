@@ -26,10 +26,21 @@ public class GameManager : MonoBehaviour
     [Tooltip("Whether the player is currently placing a tower or not")]
     public bool placing = false;
 
+    [Header("Round Handling")]
+    public RoundManager rm;
+
+    public Transform spawn;
+
 
     public int GetMoney()
     {
         return curMoney;
+    }
+
+    void Awake()
+    {
+        rm = GetComponentInChildren<RoundManager>();
+        spawn = GameObject.Find("EnemySpawn").transform;
     }
 
     // Start is called before the first frame update
@@ -43,5 +54,9 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
 
+    }
+
+    public void processRound() {
+        rm.processRound(1);
     }
 }

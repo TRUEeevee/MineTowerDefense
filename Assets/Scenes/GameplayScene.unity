@@ -382,6 +382,8 @@ MonoBehaviour:
   startMoney: 300
   curMoney: 0
   placing: 0
+  rm: {fileID: 0}
+  spawn: {fileID: 0}
 --- !u!4 &107443206
 Transform:
   m_ObjectHideFlags: 0
@@ -409,6 +411,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4973d1ba1e28174485de41efe8a20da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creeper: {fileID: 4547272878514154387, guid: 96a7eeb047e0ffb41ae3e5fc3ab36745, type: 3}
+  skeleton: {fileID: 0}
+  zombie: {fileID: 0}
+  roundFile: {fileID: 0}
 --- !u!1 &144449007
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,9 +895,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 286601511}
-        m_TargetAssemblyTypeName: SpawnEnemy, Assembly-CSharp
-        m_MethodName: SpawnTheEnemy
+      - m_Target: {fileID: 107443205}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: processRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
