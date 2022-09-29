@@ -19,4 +19,10 @@ I wrote a python script to allow for easy creation of waves via a GUI. Once fini
 
 #### Setup
 
-Download the python script. It is recommended to move the tool onto your Desktop before using, though it does not *have* to be on the Desktop. Double Click on the script to run it and open the round creation application. From here, enter all the information, remebmber to select round number as well. Pressing the **Add Info** button will add the information that has been entered to the round data where you can then change the values and add new waves/clusters of enemies.
+Download the python script. It is recommended to move the tool onto your Desktop before using, though it does not *have* to be on the Desktop. 
+> Double Click on the script to run it and open the round creation application. 
+
+> Enter all the information, remebmber to select round number as well. 
+
+> Pressing the **Add Info** button will add the information to the round data 
+>> Change the values and add new waves/clusters of enemies again by pressing **Add Info** again
