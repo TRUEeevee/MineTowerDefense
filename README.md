@@ -9,7 +9,11 @@ A project where 2 pro gamers make a tower defense
 
 #### What it is
 
-I wrote a python script to allow for easy creation of waves via a GUI. Once finished, json files containing data on the rounds will be generated. You can then open the json files with the script by dragging/dropping onto the script and it will generate encoded txt files containing the same data. These txt files of encoded hex will be used by the Round Manager script in our game to control the spawning of enemies. The **Enemy Type** and **Count** fields are self-explanatory, the **Spacing Delay** field is how many seconds apart each enemy will spawn within their clusters. The **Process Delay** field indicated how long until the next cluster will be processed; this will allow for multiple clusters to be processed within the same frame.
+I wrote a python script to allow for easy creation of waves via a GUI. Once finished, json files containing data on the rounds will be generated. You can then open the json files with the script by dragging/dropping onto the script and it will generate encoded txt files containing the same data. These txt files of encoded hex will be used by the Round Manager script in our game to control the spawning of enemies. 
+
+> The **Enemy Type** and **Count** fields are self-explanatory
+> The **Spacing Delay** field is how many seconds apart each enemy will spawn within their clusters. 
+> The **Process Delay** field indicated how long until the next cluster will be processed; this will allow for multiple clusters to be processed within the same frame.
 
 #### Setup
 
