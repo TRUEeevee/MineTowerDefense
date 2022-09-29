@@ -25,4 +25,4 @@ Download the python script. It is recommended to move the tool onto your Desktop
 - Enter all the information, remebmber to select round number as well. 
 
 - Pressing the **Add Info** button will add the information to the round data 
-  > Change the values and add new waves/clusters of enemies again by pressing **Add Info** again
+  - Change the values and add new waves/clusters of enemies again by pressing **Add Info** again
