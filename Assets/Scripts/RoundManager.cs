@@ -62,6 +62,7 @@ public class RoundManager : MonoBehaviour
             StartCoroutine("SpawnCluster", cluster);
             yield return new WaitForSeconds(cluster.processDelay);
         }
+        waves.Clear();
     }
 
     private IEnumerator SpawnCluster(ClusterInfo cluster) {

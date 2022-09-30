@@ -213,7 +213,7 @@ MonoBehaviour:
         m_MethodName: TowerButtonPress
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5610470049267361564, guid: 7aeb3fee683b1104bb1f8a5afbd3056d,
+          m_ObjectArgument: {fileID: 1833053313842242642, guid: bb5631b80b950b6438652cf85c12c5a8,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -1790,3 +1790,77 @@ Transform:
   m_Father: {fileID: 1618392931}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1833053313727314706
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1833053313842242642, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_Name
+      value: Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242642, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0451841
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833053313842242647, guid: bb5631b80b950b6438652cf85c12c5a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb5631b80b950b6438652cf85c12c5a8, type: 3}
