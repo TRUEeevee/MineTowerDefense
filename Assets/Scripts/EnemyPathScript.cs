@@ -5,6 +5,10 @@ using Unity.Collections;
 
 public class EnemyPathScript : MonoBehaviour
 {
+    [Header("References to game managing script")]
+    [SerializeField]
+    private GameManager gm;
+
     //Handles the very basic moving along the path, what speed, health, and enemy name.
     [Header("Enemy Related Variables")]
     [SerializeField]
@@ -45,6 +49,7 @@ public class EnemyPathScript : MonoBehaviour
 
     private void Awake()
     {
+        gm = GameObject.FindObjectOfType<GameManager>();
         pathBeacons = FindObjectOfType<MapController>().GetPathwayBeacons();
         curX = transform.position.x;
         prevX = curX;
@@ -66,7 +71,7 @@ public class EnemyPathScript : MonoBehaviour
 
         if (transform.position != pathBeacons[curBeacon].position)
         {
-            Vector2 p = Vector2.MoveTowards(transform.position, pathBeacons[curBeacon].position, speed);
+            Vector2 p = Vector2.MoveTowards(transform.position, pathBeacons[curBeacon].position, speed * Time.timeScale);
             GetComponent<Rigidbody2D>().MovePosition(p);
         }
         else 

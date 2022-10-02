@@ -19,9 +19,16 @@ public class RoundManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    [Tooltip("Boolen to keep track of if a file is still being processed")]
+    public bool spawning;
+
     [SerializeField] GameObject creeper, skeleton, zombie;
 
     private GameObject[] enemies;
+
+    // object to make parent of all enemies
+    private GameObject enemyParent;
 
     [SerializeField]
     [Tooltip("List containing all the clusters that will make up the round")]
@@ -41,6 +48,8 @@ public class RoundManager : MonoBehaviour
         allRoundFiles = new List<string>();
         waves = new List<ClusterInfo>();
         enemies = new GameObject[4] {null, creeper, zombie, skeleton};
+        enemyParent = GameObject.Find("EnemyParent");
+        
     }
     void Start()
     {
@@ -50,6 +59,7 @@ public class RoundManager : MonoBehaviour
     public void processRound(int roundNum) {
         // fill list of waves with all info from file
         processFile(roundNum);
+        spawning = true;
 
         // start processing clusters via coroutines
         StartCoroutine(StartSpawning());
@@ -59,25 +69,25 @@ public class RoundManager : MonoBehaviour
     private IEnumerator StartSpawning() {
         // process each cluster in the waves list and start spawning each of them after the appropriate process delay
         foreach (ClusterInfo cluster in waves) {
-            StartCoroutine("SpawnCluster", cluster);
+            for (int i = 0; i < cluster.count; i++) {
+                while (GetComponent<GameManager>().currentState == GameState.Paused) {
+                    yield return null;
+                }
+                GameObject enemy = Instantiate(enemies[cluster.enemyType], GetComponentInParent<GameManager>().spawn.position, Quaternion.identity);
+                enemy.transform.parent = enemyParent.transform;
+                yield return new WaitForSeconds(cluster.spaceDelay);
+                
+            }
             yield return new WaitForSeconds(cluster.processDelay);
         }
         waves.Clear();
+        spawning = false;
     }
-
-    private IEnumerator SpawnCluster(ClusterInfo cluster) {
-        // spawn cluster.count number of cluster.enemytype enemies
-        for (int i = 0; i < cluster.count; i++) {
-            Instantiate(enemies[cluster.enemyType], GetComponentInParent<GameManager>().spawn.position, Quaternion.identity);
-            yield return new WaitForSeconds(cluster.spaceDelay);
-        }
-    }
-
 
 
     public void processFile(int roundNum) {
         // load file from Hex/ directory and store into a string
-        string fileData = File.ReadAllText(string.Format("Hex/Round{0}.txt", roundNum));
+        string fileData = File.ReadAllText(string.Format("Assets/Hex/Round{0}.txt", roundNum));
 
         // iterate through file content (string) and process 6 bytes into ClusterInfo
         for (int i = 0; i < fileData.Length; i += 6) {
