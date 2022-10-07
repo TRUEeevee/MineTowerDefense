@@ -34,6 +34,8 @@ public class OptionSceneManager : MonoBehaviour
     Canvas canvas;
     public AudioMixer musicMixer;
     public AudioMixer sfxMixer;
+    [SerializeField]
+    private GameObject sfxSliderPrefab, musicSliderPrefab;
     Options options = new Options();
 
     void Awake() {
@@ -48,41 +50,17 @@ public class OptionSceneManager : MonoBehaviour
         // exitButtonObj.transform.SetParent(canvas.transform, false);
         // Button exitButton = exitButtonObj.GetComponent<Button>();
         // exitButton.onClick.AddListener():
-        // mixer = FindObjectOfType<AudioMixer>();
 
-        // Create slider UI element for setting music volume
-        GameObject musicSliderObj = DefaultControls.CreateSlider(new DefaultControls.Resources());
-        musicSliderObj.transform.SetParent(canvas.transform, false);
-        // musicSliderObj.transform.localScale *= 3;
-        musicSliderObj.GetComponent<RectTransform>().sizeDelta *= 2;
-
-        GameObject musicTextObj = DefaultControls.CreateText(new DefaultControls.Resources());
-        musicTextObj.transform.SetParent(musicSliderObj.transform, false);
-        musicTextObj.transform.position += new Vector3(0, 35, 0);
-        musicTextObj.GetComponent<RectTransform>().sizeDelta *= 2;
-
-        Text musicText = musicTextObj.GetComponent<Text>();
-        musicText.font = Font.CreateDynamicFontFromOSFont("Arial", 8);
-        musicText.fontSize = 32;
-        musicText.text = "Music Volume Level";
-        musicText.resizeTextForBestFit = true;
-        musicText.color = Color.white;
-
-        Slider musicSlider = musicSliderObj.GetComponent<Slider>();
-        musicSlider.minValue = 0.0001f;
-        musicSlider.maxValue = 1;
+        // Instantiate slider UI element for music volume NOTE: CHANGE SLIDER PREFAB
+        GameObject musicSliderObj = Instantiate(musicSliderPrefab, transform.position, Quaternion.identity, canvas.transform);
+        musicSliderObj.transform.position += new Vector3(-240, 0, 0);
+        Slider musicSlider =  musicSliderObj.GetComponent<Slider>();
         musicSlider.value = options.music;
         musicSlider.onValueChanged.AddListener(new UnityAction<float>(SetMusicLevel));
 
-
-        // Create slider UI element for setting sfx volume
-        GameObject sfxSliderObj = DefaultControls.CreateSlider(new DefaultControls.Resources());
-        sfxSliderObj.transform.SetParent(canvas.transform, false);
-        sfxSliderObj.transform.position += new Vector3(0, -40, 0);
-
-        Slider sfxSlider = sfxSliderObj.GetComponent<Slider>();
-        sfxSlider.minValue = 0.0001f;
-        sfxSlider.maxValue = 1;
+        // Insantiate slider UI element for sfx volume
+        GameObject sfxSliderObj = Instantiate(sfxSliderPrefab, transform.position, Quaternion.identity, canvas.transform);
+        Slider sfxSlider =  sfxSliderObj.GetComponent<Slider>();
         sfxSlider.value = options.sfx;
         sfxSlider.onValueChanged.AddListener(new UnityAction<float>(SetSFXLevel));
 
@@ -100,6 +78,7 @@ public class OptionSceneManager : MonoBehaviour
             sfxMixer.GetFloat("SFX", out options.sfx);
             options.sfx = Mathf.Pow(10, options.sfx / 20);
             System.IO.File.WriteAllText("Assets/Options.txt", options.SaveToString());
+            SceneManager.LoadScene("TitleScene", LoadSceneMode.Single);
         }
     }
     public void SetMusicLevel(float sliderValue){

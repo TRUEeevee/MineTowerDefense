@@ -52,8 +52,7 @@ public class TitleSceneManager : MonoBehaviour
     }
 
     public void LoadOptions() {
-        // SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
-        print(options);
+        SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
     }
 
 
