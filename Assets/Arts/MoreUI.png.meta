@@ -104,43 +104,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MoreUI_1
+      name: MoreUI_0
       rect:
         serializedVersion: 2
-        x: 395
-        y: 7
-        width: 102
-        height: 422
+        x: 9
+        y: 390
+        width: 164
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5b636a4b584bfa47a6466182dc755ec
-      internalID: 1522396564
+      spriteID: 6db6601a9eacb44409650d0acb09f39d
+      internalID: 1035278883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MoreUI_2
+      name: MoreUI_5
       rect:
         serializedVersion: 2
-        x: 61
-        y: 232
-        width: 168
-        height: 110
+        x: 283
+        y: 7
+        width: 100
+        height: 422
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4100d102f2b5c24498fa21e9505c72e
-      internalID: -1053892403
+      spriteID: be5c4faea6b4624449657ce5f480e46d
+      internalID: -306527586
       vertices: []
       indices: 
       edges: []
@@ -149,19 +149,61 @@ TextureImporter:
       name: MoreUI_6
       rect:
         serializedVersion: 2
-        x: 31
-        y: 9
-        width: 113
-        height: 115
+        x: 395
+        y: 7
+        width: 102
+        height: 422
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfa471f079ea29942b9f97c593eea4c1
-      internalID: 1531363277
+      spriteID: 402ace763da23b44c9416a7d6d82f858
+      internalID: -133822931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoreUI_12
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 9
+        width: 113
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d40a3605f3eb084eb1be4237ceca2fe
+      internalID: -1444256870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoreUI_15
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 8
+        width: 99
+        height: 421
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0552d520d666a74f9bc34e3ca44519d
+      internalID: 1094455268
       vertices: []
       indices: 
       edges: []
@@ -177,15 +219,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MoreUI_8: -1410005166
-      MoreUI_4: 289483563
-      MoreUI_0: -375799715
-      MoreUI_2: -1053892403
-      MoreUI_6: 1531363277
-      MoreUI_5: 2000521025
-      MoreUI_7: -642877113
-      MoreUI_1: 1522396564
-      MoreUI_3: -1626143081
+      MoreUI_9: 2059118574
+      MoreUI_11: 1777140980
+      MoreUI_14: -1189426869
+      MoreUI_15: 1094455268
+      MoreUI_8: -1137029690
+      MoreUI_4: 184854406
+      MoreUI_0: 1035278883
+      MoreUI_13: 1167963869
+      MoreUI_10: 1040720193
+      MoreUI_16: -1329321797
+      MoreUI_2: 1566878728
+      MoreUI_6: -133822931
+      MoreUI_5: -306527586
+      MoreUI_7: 1445612837
+      MoreUI_12: -1444256870
+      MoreUI_1: -1265380248
+      MoreUI_3: 446726269
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

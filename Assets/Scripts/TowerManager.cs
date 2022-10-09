@@ -63,7 +63,8 @@ public class TowerManager : MonoBehaviour
                     gm.placing = false;
                     yield break;
                 case PlaceCode.Placed:
-                    Destroy(tower.transform.GetChild(0).gameObject);
+                    tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
+                    tower.transform.GetChild(0).gameObject.SetActive(false);
                     tower.layer = LayerMask.NameToLayer("Tower");
                     gm.placing = false;
                     yield break;

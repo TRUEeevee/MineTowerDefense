@@ -47,7 +47,7 @@ public class TitleSceneManager : MonoBehaviour
     }
 
     public void OptionsButton() {
-        SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("OptionsScene", LoadSceneMode.Single);
     }
 
     public void ExitButton() {

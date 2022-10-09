@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using System.IO;
 
 /* This script will be managing the overall gameplay loop
  * For now, this will mean the main core tower defense things
@@ -16,12 +21,36 @@ public enum GameState {
     Playing,
     Paused,
     Idle,
-    FastForward
 }
 
 public class GameManager : MonoBehaviour
 {
+    public class Options {
+        public float music;
+        public float sfx;
+
+        public Options() {}
+        public Options(int music_, int sfx_) {
+            music = music_;
+            sfx = sfx_;
+        }
+
+        public string SaveToString() {
+            return JsonUtility.ToJson(this, true);
+        }
+        public void LoadData(string jsonString) {
+            JsonUtility.FromJsonOverwrite(jsonString, this);
+        }
+
+        public override string ToString() {
+            return "Music: " + music + "\nSFX: " + sfx; 
+        }
+
+    }
+
     private float fixedDeltaTime;
+    [Header("Audio Variables")]
+    public AudioMixer musicMixer, sfxMixer;
 
     [Header("Public variables to be used throughout the game")]
     [Tooltip("Amount of health player has, game ends when this reaches 0")]
@@ -33,12 +62,26 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int curMoney;
 
+
+    [Header("Game State")]
     [SerializeField]
     private GameState prevState;
 
     [SerializeField]
     [Tooltip("Enum to describe current state of game")]
     public GameState currentState;
+
+    [SerializeField]
+    private bool FastForward = false;
+
+    [SerializeField]
+    GameObject pauseMenu;
+    [SerializeField]
+    Slider musicSlider, sfxSlider;
+
+    private float prevTimeScale;
+    private Options options = new Options();
+    private GameState tempState;
     
 
 
@@ -72,6 +115,9 @@ public class GameManager : MonoBehaviour
         prevState = currentState = GameState.BetweenRounds;
         fixedDeltaTime = Time.fixedDeltaTime;
 
+        string jsonString = File.ReadAllText("Assets/Options.txt");
+        options.LoadData(jsonString);
+
     }
 
     // Start is called before the first frame update
@@ -79,13 +125,24 @@ public class GameManager : MonoBehaviour
     {
         // money set amount different based on difficulty?
         curMoney = startMoney;
+        prevTimeScale = Time.timeScale;
+
+        musicSlider.value = options.music;
+        musicSlider.onValueChanged.AddListener(new UnityAction<float>(SetMusicLevel));
+
+        sfxSlider.value = options.sfx;
+        sfxSlider.onValueChanged.AddListener(new UnityAction<float>(SetSFXLevel));
+
+        SetMusicLevel(options.music);
+        SetSFXLevel(options.sfx);
+
+        pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         switch (currentState) {
-            case GameState.FastForward:
             case GameState.Playing:
                 if (!rm.spawning && enemyParent.transform.childCount == 0) {
                     currentState = GameState.BetweenRounds;
@@ -105,30 +162,65 @@ public class GameManager : MonoBehaviour
 
         prevState = currentState;
     }
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (currentState == GameState.Paused)
+                Resume();
+            else 
+                Pause();
+        }
+    }
 
     public void startRound() {
         rm.processRound(roundNum);
+        currentState = GameState.Playing;
     }
 
-    public void fastForwardButtonPress() {
-         if (currentState == GameState.Playing) {
-            currentState = GameState.FastForward;
-            Time.timeScale = 1.5f;
-        } else {
-            currentState = GameState.Playing;
-            Time.timeScale = 1;
-        }
-    }
+    // public void fastForwardButtonPress() {
+    //      if (currentState == GameState.Playing) {
+    //         currentState = GameState.FastForward;
+    //         Time.timeScale = 1.5f;
+    //     } else {
+    //         currentState = GameState.Playing;
+    //         Time.timeScale = 1;
+    //     }
+    // }
     public void playButtonPress() {
-        if (currentState == GameState.Playing) {
-            currentState = GameState.Paused;
-            Time.timeScale = 0;
-        } else {
-            if (currentState == GameState.BetweenRounds)
-                startRound();
-            currentState = GameState.Playing;
-            Time.timeScale = 1;
-        }
-            
+        if (currentState == GameState.BetweenRounds)
+            startRound();
+        else
+            FastForward = !FastForward;
+
+        Time.timeScale = FastForward ? 1.5f : 1;
+    }
+
+    public void Pause() {
+        tempState = currentState;
+        currentState = GameState.Paused;
+        pauseMenu.SetActive(true);
+        SetMusicLevel(options.music);
+        SetSFXLevel(options.sfx);
+        prevTimeScale = Time.timeScale;
+        Time.timeScale = 0;
+    }
+
+    public void Resume() {
+        musicMixer.GetFloat("Music", out options.music);
+        options.music = Mathf.Pow(10, options.music / 20);
+        sfxMixer.GetFloat("SFX", out options.sfx);
+        options.sfx = Mathf.Pow(10, options.sfx / 20);
+        System.IO.File.WriteAllText("Assets/Options.txt", options.SaveToString());
+
+        Time.timeScale = prevTimeScale;
+        currentState = tempState;
+        pauseMenu.SetActive(false);
+    }
+
+    public void SetMusicLevel(float sliderValue){
+        musicMixer.SetFloat("Music", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void SetSFXLevel(float sliderValue) {
+        sfxMixer.SetFloat("SFX", Mathf.Log10(sliderValue) * 20);
     }
 }

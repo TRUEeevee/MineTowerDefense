@@ -32,15 +32,14 @@ public class OptionSceneManager : MonoBehaviour
 
     }
     Canvas canvas;
-    public AudioMixer musicMixer;
-    public AudioMixer sfxMixer;
+    public AudioMixer musicMixer, sfxMixer;
     [SerializeField]
     private GameObject sfxSliderPrefab, musicSliderPrefab;
     Options options = new Options();
 
     void Awake() {
         canvas = FindObjectOfType<Canvas>();
-        string jsonString = File.ReadAllText(string.Format("Assets/Options.txt"));
+        string jsonString = File.ReadAllText("Assets/Options.txt");
         options.LoadData(jsonString);
     }
     // Start is called before the first frame update
