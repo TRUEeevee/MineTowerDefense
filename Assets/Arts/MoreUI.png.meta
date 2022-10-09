@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b53bdbe350fd39c4cbafacbedc65297a
+guid: abc9742ea1c8b4240b616bcb01c82084
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UISliderOverworldv2_0
+      name: MoreUI_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 51
-        width: 115
-        height: 421
+        x: 395
+        y: 7
+        width: 102
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f69e29adb1bf9642a88f91235f2cf61
-      internalID: -284877516
+      spriteID: e5b636a4b584bfa47a6466182dc755ec
+      internalID: 1522396564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UISliderOverworldv2_1
+      name: MoreUI_2
       rect:
         serializedVersion: 2
-        x: 149
-        y: 48
-        width: 114
-        height: 434
+        x: 61
+        y: 232
+        width: 168
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,18 +139,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3b611eabd3e894438ea78b7c6dd61b8
-      internalID: 2139023742
+      spriteID: a4100d102f2b5c24498fa21e9505c72e
+      internalID: -1053892403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UISliderOverworldv2_2
+      name: MoreUI_6
       rect:
         serializedVersion: 2
-        x: 333
-        y: 170
+        x: 31
+        y: 9
         width: 113
         height: 115
       alignment: 0
@@ -160,29 +160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e92c4e4465582fa48aedec1b7d31f943
-      internalID: 1481600655
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UISliderOverworldv2_3
-      rect:
-        serializedVersion: 2
-        x: 519
-        y: 100
-        width: 112
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5a4ffebc81d2cb4886e4389aea8db4c
-      internalID: 107834204
+      spriteID: dfa471f079ea29942b9f97c593eea4c1
+      internalID: 1531363277
       vertices: []
       indices: 
       edges: []
@@ -198,10 +177,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UISliderOverworldv2_1: 2139023742
-      UISliderOverworldv2_3: 107834204
-      UISliderOverworldv2_0: -284877516
-      UISliderOverworldv2_2: 1481600655
+      MoreUI_8: -1410005166
+      MoreUI_4: 289483563
+      MoreUI_0: -375799715
+      MoreUI_2: -1053892403
+      MoreUI_6: 1531363277
+      MoreUI_5: 2000521025
+      MoreUI_7: -642877113
+      MoreUI_1: 1522396564
+      MoreUI_3: -1626143081
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

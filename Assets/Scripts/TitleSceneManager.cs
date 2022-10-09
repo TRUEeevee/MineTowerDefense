@@ -12,7 +12,6 @@ public class TitleSceneManager : MonoBehaviour
         public float music;
         public float sfx;
 
-        public Options() {}
         public Options(int music_, int sfx_) {
             music = music_;
             sfx = sfx_;
@@ -31,8 +30,6 @@ public class TitleSceneManager : MonoBehaviour
 
     }
     Canvas canvas;
-    public string jsonString;
-    Options options = new Options();
     void Awake() {
         canvas = FindObjectOfType<Canvas>();
         if (!System.IO.File.Exists("Assets/Options.txt")) {
@@ -42,17 +39,22 @@ public class TitleSceneManager : MonoBehaviour
     }
     void Start()
     {
-        jsonString = File.ReadAllText(string.Format("Assets/Options.txt"));
-        options.LoadData(jsonString);
-
-        GameObject newButton = DefaultControls.CreateButton(new DefaultControls.Resources());
-        newButton.transform.SetParent(canvas.transform, false);
-        newButton.GetComponent<Button>().onClick.AddListener(LoadOptions);
         
     }
 
-    public void LoadOptions() {
+    public void PlayButton() {
+        SceneManager.LoadScene("GameplayScene", LoadSceneMode.Single);
+    }
+
+    public void OptionsButton() {
         SceneManager.LoadScene("OptionsScene", LoadSceneMode.Single);
+    }
+
+    public void ExitButton() {
+        // 1st line is to quit application, 2nd line is to quit playing in editor
+        // Uncomment/comment lines when game is ready to be shipped
+        // Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
 

@@ -53,13 +53,14 @@ public class OptionSceneManager : MonoBehaviour
 
         // Instantiate slider UI element for music volume NOTE: CHANGE SLIDER PREFAB
         GameObject musicSliderObj = Instantiate(musicSliderPrefab, transform.position, Quaternion.identity, canvas.transform);
-        musicSliderObj.transform.position += new Vector3(-240, 0, 0);
+        musicSliderObj.transform.position += new Vector3(640, 140, 0);
         Slider musicSlider =  musicSliderObj.GetComponent<Slider>();
         musicSlider.value = options.music;
         musicSlider.onValueChanged.AddListener(new UnityAction<float>(SetMusicLevel));
 
         // Insantiate slider UI element for sfx volume
         GameObject sfxSliderObj = Instantiate(sfxSliderPrefab, transform.position, Quaternion.identity, canvas.transform);
+        sfxSliderObj.transform.position += new Vector3(800, 140, 0);
         Slider sfxSlider =  sfxSliderObj.GetComponent<Slider>();
         sfxSlider.value = options.sfx;
         sfxSlider.onValueChanged.AddListener(new UnityAction<float>(SetSFXLevel));
