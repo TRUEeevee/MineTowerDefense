@@ -6,7 +6,7 @@ public class TowerScript : MonoBehaviour
 {
     //Tower Script is specifically for anything that would be considered a Normal Tower and how it would be handled
 
-    //this should handle initialization of the tower, price of the tower, range of the tower and what mask the tower is able to target. Actual combat will be handled in its own script.
+    // this should handle initialization of the tower, price of the tower, range of the tower and what mask the tower is able to target. Actual combat will be handled in its own script.
     [Header("Tower Related Variables")]
     [SerializeField]
     [Tooltip("Price for tower to be sold at")]
@@ -27,7 +27,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField]
     private LayerMask obstacleLayer;
     [SerializeField]
-    public bool CanSeeEnemy; // {get; private set; }    // any script can read this value, only this script can set the value
+    public bool CanSeeEnemy;
     [SerializeField]
     private Collider2D[] rangeCheck;
     void Start()

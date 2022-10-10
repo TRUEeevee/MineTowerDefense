@@ -241,10 +241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd943c47c02a2347becd3d1f9395d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   maxHealth: 400
   currentHealth: 0
   speed: 0.1
   enemyName: Creeper
+  reward: 50
   distanceTraveled: 0
   pathBeacons: []
 --- !u!50 &4696749204484018569

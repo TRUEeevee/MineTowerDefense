@@ -8,6 +8,7 @@ public class TowerManager : MonoBehaviour
 {
 
     //Trigger the tower placement method on button press
+
     // Reference to game manager
     private GameManager gm;
     // Referene to map controller
@@ -35,7 +36,7 @@ public class TowerManager : MonoBehaviour
     {
         switch (towerType.tag) {
             case "BowTower":
-                towerButton = GameObject.Find("SwordTowerButton"); // CHANGE TO BOW TOWER BUTTON WHEN WE HAVE BOW BUTTON
+                towerButton = GameObject.Find("ArcherTowerButton");
                 break;
             case "SwordTower":
                 towerButton = GameObject.Find("SwordTowerButton");

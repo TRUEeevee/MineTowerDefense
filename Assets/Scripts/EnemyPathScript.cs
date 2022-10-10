@@ -10,7 +10,7 @@ public class EnemyPathScript : MonoBehaviour
     private GameManager gm;
 
     //Handles the very basic moving along the path, what speed, health, and enemy name.
-    [Header("Enemy Related Variables")]
+    [Header("Enemy Stat Variables")]
     [SerializeField]
     private int maxHealth;
     [SerializeField]
@@ -19,6 +19,9 @@ public class EnemyPathScript : MonoBehaviour
     private float speed;
     [SerializeField]
     private string enemyName;
+    [SerializeField]
+    [Tooltip("Currency earned when taking down enemy, set value when making prefab")]
+    private int reward;
 
     [Header("Pathing Variables")]
     [Tooltip("Possibly for debugging only")]
@@ -84,16 +87,15 @@ public class EnemyPathScript : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Kill();
             //add money
             //proc on death effects
-
+            Kill();
         }
 
         if (transform.position == pathBeacons[pathBeacons.Length - 1].position)
         {
-            Kill();
             //lose a life
+            Kill();
         }
     }
 
