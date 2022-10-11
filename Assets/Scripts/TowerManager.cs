@@ -13,13 +13,18 @@ public class TowerManager : MonoBehaviour
     private GameManager gm;
     // Referene to map controller
     private MapController mc;
+
+    [SerializeField]
+    [Tooltip("Price to buy tower")]
+    // used to determine if button should be 
+    private int price;
     // Colors for range indicator when placing tower
     private Color redTransparent = new Color(1.0f, 0.5f, 0.5f, 0.5f);
     private Color whiteTransparent = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
     // Reference to button clicked
     [SerializeField]
-    private GameObject towerButton;
+    private GameObject towerButton, archerButton, swordButton, grieferButton;
 
     private enum PlaceCode {
         Placed,
@@ -30,24 +35,27 @@ public class TowerManager : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>(); //caching access to the game manager to reference things such as current money, difficulty (which should affect prices)
         mc = FindObjectOfType<MapController>();
+
+        archerButton = GameObject.Find("ArcherTowerButton"); 
+        swordButton = GameObject.Find("SwordTowerButton");
+        grieferButton = GameObject.Find("GrieferTowerButton");
     }
 
     public void TowerButtonPress(GameObject towerType)  //called when the towers icon buttons are pressed. Should receive from the button pressed the prefab for tower instanciation.
     {
         switch (towerType.tag) {
             case "BowTower":
-                towerButton = GameObject.Find("ArcherTowerButton");
+                towerButton = archerButton;
                 break;
             case "SwordTower":
-                towerButton = GameObject.Find("SwordTowerButton");
+                towerButton = swordButton;
                 break;
             case "GrieferTower":
-                towerButton = GameObject.Find("GrieferTowerButton");
+                towerButton = grieferButton;
                 break;
         }
         GameObject towerToPlace = Instantiate(towerType, Input.mousePosition, Quaternion.identity);
         gm.placing = true;
-        FindObjectOfType<MapController>().CanPlaceTower(towerToPlace.transform);
         towerButton.GetComponent<Button>().interactable = false;
 
         StartCoroutine(FollowMouse(towerToPlace));
@@ -66,6 +74,7 @@ public class TowerManager : MonoBehaviour
                 case PlaceCode.Placed:
                     tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
                     tower.transform.GetChild(0).gameObject.SetActive(false);
+                    gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice());
                     tower.layer = LayerMask.NameToLayer("Tower");
                     gm.placing = false;
                     yield break;
@@ -83,7 +92,6 @@ public class TowerManager : MonoBehaviour
         }
         if (mc.CanPlaceTower(tower.transform)) {
             tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
-            // place tower code
             if (Input.GetMouseButtonDown(0)) {
                 
                 return PlaceCode.Placed;
@@ -94,6 +102,10 @@ public class TowerManager : MonoBehaviour
             tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = redTransparent;
             return PlaceCode.Continue;
         }
+    }
+
+    private void FixedUpdate() {
+        
     }
 
     

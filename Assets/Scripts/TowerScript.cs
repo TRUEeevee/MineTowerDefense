@@ -9,7 +9,8 @@ public class TowerScript : MonoBehaviour
     // this should handle initialization of the tower, price of the tower, range of the tower and what mask the tower is able to target. Actual combat will be handled in its own script.
     [Header("Tower Related Variables")]
     [SerializeField]
-    [Tooltip("Price for tower to be sold at")]
+    [Tooltip("Price for tower to be bought at")]
+    // Don't forget to also change price on button PriceCheck script
     private int price;
     [SerializeField]
     private string towerName;

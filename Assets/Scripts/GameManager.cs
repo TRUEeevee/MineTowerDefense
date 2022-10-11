@@ -25,29 +25,6 @@ public enum GameState {
 
 public class GameManager : MonoBehaviour
 {
-    public class Options {
-        public float music;
-        public float sfx;
-
-        public Options() {}
-        public Options(int music_, int sfx_) {
-            music = music_;
-            sfx = sfx_;
-        }
-
-        public string SaveToString() {
-            return JsonUtility.ToJson(this, true);
-        }
-        public void LoadData(string jsonString) {
-            JsonUtility.FromJsonOverwrite(jsonString, this);
-        }
-
-        public override string ToString() {
-            return "Music: " + music + "\nSFX: " + sfx; 
-        }
-
-    }
-
     private float fixedDeltaTime;
     [Header("Audio Variables")]
     public AudioMixer musicMixer, sfxMixer;
@@ -73,6 +50,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private bool FastForward = false;
+
+    [Header("")]
+    [SerializeField]
+    GameObject projectileParent;
 
     [SerializeField]
     GameObject pauseMenu;
@@ -107,12 +88,21 @@ public class GameManager : MonoBehaviour
         curMoney += amount;
     }
 
+    public void SubMoney(int amount) {
+        curMoney -= amount;
+    }
+
+    public bool CanAfford(int amount) {
+        return curMoney >= amount;
+    }
+
     void Awake()
     {
         // grab references to neccessary components
         rm = GetComponentInChildren<RoundManager>();
         spawn = GameObject.Find("EnemySpawn").transform;
         enemyParent = GameObject.Find("EnemyParent");
+        projectileParent = GameObject.Find("ProjectileParent");
 
         // set values of needed variables
         roundNum = 1;
@@ -151,6 +141,9 @@ public class GameManager : MonoBehaviour
                 if (!rm.spawning && enemyParent.transform.childCount == 0) {
                     currentState = GameState.BetweenRounds;
                     roundNum++;
+                    for (int i = 0; i < projectileParent.transform.childCount; i++) {
+                        Destroy(projectileParent.transform.GetChild(i).gameObject);
+                    }
                 }
                 break;
             case GameState.BetweenRounds:
@@ -167,7 +160,7 @@ public class GameManager : MonoBehaviour
         prevState = currentState;
     }
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (!placing && Input.GetKeyDown(KeyCode.Escape)) {
             if (currentState == GameState.Paused)
                 Resume();
             else 
@@ -180,15 +173,6 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Playing;
     }
 
-    // public void fastForwardButtonPress() {
-    //      if (currentState == GameState.Playing) {
-    //         currentState = GameState.FastForward;
-    //         Time.timeScale = 1.5f;
-    //     } else {
-    //         currentState = GameState.Playing;
-    //         Time.timeScale = 1;
-    //     }
-    // }
     public void playButtonPress() {
         if (currentState == GameState.BetweenRounds)
             startRound();

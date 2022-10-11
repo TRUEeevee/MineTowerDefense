@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06733464f0fc49841921f2b578541d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  price: 10
   towerName: Bow and Arrow tower
   furthestEnemy: {fileID: 0}
   range: 4
@@ -1369,6 +1369,7 @@ MonoBehaviour:
   attackDamage: 50
   attackSpeed: 3
   pierceNum: 0
+  projectileSpeed: 10
 --- !u!1 &1833053313998802209
 GameObject:
   m_ObjectHideFlags: 0

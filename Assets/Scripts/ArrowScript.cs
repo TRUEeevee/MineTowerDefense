@@ -5,10 +5,13 @@ using UnityEngine;
 public class ArrowScript : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    [Tooltip("Projectile Speed")]
+    public float speed;
 
+    // Position for projectile to be instantiated
     private Vector3 startPosition;
-    public int damage = 50;
+    [Tooltip("Amount of damage to inflict on enemy on impact")]
+    public int damage;
     public int pierceNum;
 
     public Vector3 target;

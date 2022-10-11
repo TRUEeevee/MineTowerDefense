@@ -22,7 +22,15 @@ public class BowTowerScript : MonoBehaviour
     [Tooltip("How many enemies the projectile goes through")]
     private int pierceNum;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    [Tooltip("How fast the arrow/projectile moves")]
+    private int projectileSpeed;
+
+    private GameObject projectileParent;
+
+    private void Awake() {
+        projectileParent = GameObject.Find("ProjectileParent");
+    }
     void Start()
     {
         towerScript = GetComponent<TowerScript>();
@@ -36,7 +44,6 @@ public class BowTowerScript : MonoBehaviour
         
         while (true)
         {
-            // print("layer is" + gameObject.layer + " and get mask is " + LayerMask.GetMask("Tower"));
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy)
                 Attack();
 
@@ -46,14 +53,17 @@ public class BowTowerScript : MonoBehaviour
 
     private void Attack()
     {
-        // if (towerScript.furthestEnemy) {
-             //instanciate projectile
-        GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity);
-        projectile.GetComponent<ArrowScript>().towerScript = towerScript;
-        projectile.GetComponent<ArrowScript>().damage = attackDamage;
-        projectile.GetComponent<ArrowScript>().pierceNum = pierceNum;
-            //The bullet itself will have a script for its colission and calls a damage function on the enemy.
-        // }
+        GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
+        ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
+        projectileScript.towerScript = towerScript;
+        projectileScript.damage = attackDamage;
+        projectileScript.pierceNum = pierceNum;
+        projectileScript.speed = projectileSpeed;
+
+        // projectile.GetComponent<ArrowScript>().towerScript = towerScript;
+        // projectile.GetComponent<ArrowScript>().damage = attackDamage;
+        // projectile.GetComponent<ArrowScript>().pierceNum = pierceNum;
+        // projectile.GetComponent<ArrowScript>().speed = projectileSpeed;
     }
 
     void Update() {
