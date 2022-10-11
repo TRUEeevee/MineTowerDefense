@@ -37,10 +37,6 @@ public class RoundManager : MonoBehaviour
 
     private List<string> allRoundFiles;
 
-    [SerializeField]
-    [Tooltip("File containing encoded round information")]
-    private TextAsset roundFile;
-
     // Start is called before the first frame update
 
     void Awake()

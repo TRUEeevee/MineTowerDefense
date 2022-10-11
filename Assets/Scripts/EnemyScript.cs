@@ -87,7 +87,7 @@ public class EnemyScript : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //add money
+            gm.AddMoney(reward);
             //proc on death effects
             Kill();
         }

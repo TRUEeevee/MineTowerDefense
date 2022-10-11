@@ -103,6 +103,10 @@ public class GameManager : MonoBehaviour
         return curMoney;
     }
 
+    public void AddMoney(int amount) {
+        curMoney += amount;
+    }
+
     void Awake()
     {
         // grab references to neccessary components
