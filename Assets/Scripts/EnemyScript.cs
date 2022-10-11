@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Collections;
 
-public class EnemyPathScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
     [Header("References to game managing script")]
     [SerializeField]

@@ -53,7 +53,7 @@ public class TowerScript : MonoBehaviour
             for (int i = 1; i < rangeCheck.Length; i++) {
                 if (enemyVisible(rangeCheck[i].gameObject.transform)) 
                 {
-                    if (rangeCheck[i].GetComponentInParent<EnemyPathScript>().GetDistance() > rangeCheck[furthestTargetIndex].GetComponentInParent<EnemyPathScript>().GetDistance())
+                    if (rangeCheck[i].GetComponentInParent<EnemyScript>().GetDistance() > rangeCheck[furthestTargetIndex].GetComponentInParent<EnemyScript>().GetDistance())
                     {
                         furthestTargetIndex = i;
                     }
