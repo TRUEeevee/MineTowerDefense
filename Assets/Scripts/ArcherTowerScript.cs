@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BowTowerScript : MonoBehaviour
+public class ArcherTowerScript : MonoBehaviour
 {
     [SerializeField]
     private TowerScript towerScript;
@@ -44,8 +45,11 @@ public class BowTowerScript : MonoBehaviour
         
         while (true)
         {
-            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy)
+            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy) {
                 Attack();
+                GetComponent<Animator>().Play("ArcherAttack");
+            }
+                
 
             yield return wait;
         }
@@ -68,6 +72,11 @@ public class BowTowerScript : MonoBehaviour
 
     void Update() {
         // print(towerScript.GetPrice());
+    }
+
+    private void OnMouseDown() {
+        if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer)
+            print(name);
     }
 
 

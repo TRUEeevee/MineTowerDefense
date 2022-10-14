@@ -92,6 +92,8 @@ public class TowerScript : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(GetComponent<BoxCollider2D>().bounds.center, 2 * GetComponent<BoxCollider2D>().bounds.extents);
         // if (CanSeeEnemy) {
         //     Gizmos.color = Color.red;
         //     Gizmos.DrawLine(transform.position, furthestEnemy.transform.position);

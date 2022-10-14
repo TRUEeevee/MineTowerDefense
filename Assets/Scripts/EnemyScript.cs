@@ -107,6 +107,7 @@ public class EnemyScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        damage = Mathf.Abs(damage);
         //calculated IF the target is invulnerable
 
         //calculates armor values?

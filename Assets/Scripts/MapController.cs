@@ -30,8 +30,10 @@ public class MapController : MonoBehaviour
 
     public bool onObstacle(Transform tower) {
         LayerMask obstacle = LayerMask.GetMask("Obstacle", "Tower");
-        float radius = tower.localScale.x * tower.GetComponent<CircleCollider2D>().radius;
-        if (Physics2D.OverlapCircle(tower.position, radius, obstacle)) {
+        Vector3 extents = tower.GetComponent<BoxCollider2D>().bounds.extents;
+        Vector3 center = tower.GetComponent<BoxCollider2D>().bounds.center;
+
+        if (Physics2D.OverlapArea(center + extents, center - extents, obstacle)) {
             return true;
         }
         return false;

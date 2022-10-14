@@ -16,9 +16,9 @@ public class ArrowScript : MonoBehaviour
 
     public Vector3 target;
     public TowerScript towerScript;
-    private BowTowerScript bowTower;
+    private ArcherTowerScript bowTower;
     private Rigidbody2D rb;
-    private Vector3 angle;
+    private Vector3 travelAngle;
 
 
     // Start is called before the first frame update
@@ -31,22 +31,25 @@ public class ArrowScript : MonoBehaviour
             target = towerScript.furthestEnemy.transform.position;
             startPosition = towerScript.GetComponentInParent<Transform>().position;
 
-            gameObject.transform.LookAt(towerScript.furthestEnemy.transform);
+            // gameObject.transform.LookAt(towerScript.furthestEnemy.transform);
             transform.localRotation = Quaternion.Euler(0, 0, transform.rotation.z);
 
             Destroy(gameObject, 2f);
         }
 
-        angle = target - transform.position;
-        float rotationAngle = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg - 0f;
+        travelAngle = target - transform.position;
+        float rotationAngle = Mathf.Atan2(travelAngle.y, travelAngle.x) * Mathf.Rad2Deg - 0f;
         rb.rotation = rotationAngle;
+
+        float arrowAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(arrowAngle, Vector3.forward);
         
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.MovePosition(transform.position + angle.normalized * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + travelAngle.normalized * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -57,7 +60,5 @@ public class ArrowScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-            
-
     }
 }

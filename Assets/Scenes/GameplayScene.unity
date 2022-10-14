@@ -390,6 +390,7 @@ MonoBehaviour:
   prevState: 0
   currentState: 0
   FastForward: 0
+  projectileParent: {fileID: 0}
   pauseMenu: {fileID: 1108184335}
   musicSlider: {fileID: 3549034691837649167}
   sfxSlider: {fileID: 820660632}
@@ -671,7 +672,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 34bbce5b70a130a4ba1fc62689d2f14d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3294110dc787af40bc53d2b3d1faf76, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
