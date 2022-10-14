@@ -53,10 +53,12 @@ public class GameManager : MonoBehaviour
 
     [Header("")]
     [SerializeField]
-    GameObject projectileParent;
+    public GameObject projectileParent;
+    [SerializeField]
+    public GameObject lastClickedTower = null;
 
     [SerializeField]
-    GameObject pauseMenu;
+    public GameObject pauseMenu;
     [SerializeField]
     Slider musicSlider, sfxSlider;
 
@@ -136,6 +138,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+
+        // state machine 
         switch (currentState) {
             case GameState.Playing:
                 if (!rm.spawning && enemyParent.transform.childCount == 0) {
@@ -158,8 +162,15 @@ public class GameManager : MonoBehaviour
         }
 
         prevState = currentState;
+
     }
     private void Update() {
+        if (Input.GetMouseButtonDown(0) && lastClickedTower && !(currentState == GameState.Paused)) {
+            // if (lastClickedTower.transform.GetChild(0).gameObject.activeSelf) {
+            print("unclick");
+            unclickTower();
+            
+        }
         if (!placing && Input.GetKeyDown(KeyCode.Escape)) {
             if (currentState == GameState.Paused)
                 Resume();
@@ -167,6 +178,12 @@ public class GameManager : MonoBehaviour
                 Pause();
         }
     }
+
+    public void unclickTower() {
+        lastClickedTower.transform.GetChild(0).gameObject.SetActive(false);
+        lastClickedTower = null;
+    }
+
 
     public void startRound() {
         rm.processRound(roundNum);

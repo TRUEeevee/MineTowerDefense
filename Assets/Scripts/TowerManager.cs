@@ -73,6 +73,7 @@ public class TowerManager : MonoBehaviour
                     yield break;
                 case PlaceCode.Placed:
                     tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
+                    tower.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
                     tower.transform.GetChild(0).gameObject.SetActive(false);
                     gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice());
                     tower.layer = LayerMask.NameToLayer("Tower");

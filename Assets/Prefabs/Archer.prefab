@@ -1352,7 +1352,7 @@ MonoBehaviour:
   arrow: {fileID: 607344616618917871, guid: 17d54ae636f48bf4d905367c677ac90a, type: 3}
   attackDamage: 50
   attackSpeed: 3
-  pierceNum: 0
+  pierceNum: 3
   projectileSpeed: 10
 --- !u!61 &5697398905354284706
 BoxCollider2D:
@@ -1618,8 +1618,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -893772821
-  m_SortingLayer: 3
+  m_SortingLayerID: 1743733939
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}

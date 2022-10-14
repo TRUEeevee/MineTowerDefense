@@ -9,6 +9,9 @@ public class ArcherTowerScript : MonoBehaviour
     private TowerScript towerScript;
 
     [SerializeField]
+    private GameManager gm;
+
+    [SerializeField]
     private GameObject arrow;
 
     [SerializeField]
@@ -27,9 +30,12 @@ public class ArcherTowerScript : MonoBehaviour
     [Tooltip("How fast the arrow/projectile moves")]
     private int projectileSpeed;
 
+    private GameObject lastTowerClicked;
+
     private GameObject projectileParent;
 
     private void Awake() {
+        gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
     }
     void Start()
@@ -64,10 +70,6 @@ public class ArcherTowerScript : MonoBehaviour
         projectileScript.pierceNum = pierceNum;
         projectileScript.speed = projectileSpeed;
 
-        // projectile.GetComponent<ArrowScript>().towerScript = towerScript;
-        // projectile.GetComponent<ArrowScript>().damage = attackDamage;
-        // projectile.GetComponent<ArrowScript>().pierceNum = pierceNum;
-        // projectile.GetComponent<ArrowScript>().speed = projectileSpeed;
     }
 
     void Update() {
@@ -75,10 +77,21 @@ public class ArcherTowerScript : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer)
-            print(name);
+        if (!(gm.currentState == GameState.Paused)) {
+            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer) {
+                GameObject circle = transform.GetChild(0).gameObject;
+                if (circle.activeSelf) {
+                    gm.unclickTower();
+                } else {
+                    circle.SetActive(true);
+                    Invoke("clicked", 0.1f);
+                }   
+            }
+        }
     }
 
-
+    private void clicked() {
+        gm.lastClickedTower = this.gameObject;
+    }
 
 }
