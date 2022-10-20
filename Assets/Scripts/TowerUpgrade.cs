@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TowerUpgrade
 {
-    Dictionary<string, int> upgradePrices = new Dictionary<string, int>();
+    // once idle mechanics are made, prices wil change to multiple resources rather than currency
+    // Dictionary<string, int> upgradePrices = new Dictionary<string, int>();
+    int upgradePrice;
+    Dictionary<string, int> statUpgrade = new Dictionary<string, int>();
 }
 
 

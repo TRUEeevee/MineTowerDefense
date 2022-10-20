@@ -33,6 +33,9 @@ public class ArcherTowerScript : MonoBehaviour
     [SerializeField]
     [Tooltip("How fast the arrow/projectile moves")]
     private int projectileSpeed;
+    [SerializeField]
+    [Tooltip("Amount of armor piercing tower currently has")]
+    private float armorPierce;
 
     private GameObject lastTowerClicked;
 

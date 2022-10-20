@@ -74,7 +74,6 @@ public class TowerScript : MonoBehaviour
         } else if (CanSeeEnemy) {
             CanSeeEnemy = false;
             furthestEnemy = null;
-          
         }
     }
 
