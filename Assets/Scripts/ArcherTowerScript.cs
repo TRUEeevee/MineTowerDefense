@@ -13,6 +13,7 @@ public class ArcherTowerScript : MonoBehaviour
 
     [SerializeField]
     private GameObject arrow;
+    [Header("Tower Stats")]
 
     [SerializeField]
     [Tooltip("Damage of primary attack/projectile")]
@@ -25,6 +26,9 @@ public class ArcherTowerScript : MonoBehaviour
     [SerializeField]
     [Tooltip("How many enemies the projectile goes through")]
     private int pierceNum;
+    [SerializeField]
+    [Tooltip("Detection range of tower")]
+    private int towerRange;
 
     [SerializeField]
     [Tooltip("How fast the arrow/projectile moves")]
@@ -41,6 +45,7 @@ public class ArcherTowerScript : MonoBehaviour
     void Start()
     {
         towerScript = GetComponent<TowerScript>();
+        towerScript.range = towerRange;
         StartCoroutine(AttackRoutine());
     }
 

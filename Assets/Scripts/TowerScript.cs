@@ -22,7 +22,7 @@ public class TowerScript : MonoBehaviour
     public GameObject furthestEnemy;
     [SerializeField]
     [Tooltip("View radius of tower")]
-    private int range;
+    public int range;
     [SerializeField]
     private LayerMask enemyLayer;
     [SerializeField]
