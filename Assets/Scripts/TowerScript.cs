@@ -9,10 +9,8 @@ public class TowerScript : MonoBehaviour
     // this should handle initialization of the tower, price of the tower, range of the tower and what mask the tower is able to target. Actual combat will be handled in its own script.
     [Header("Tower Related Variables")]
     [SerializeField]
-    [Tooltip("Price for tower to be bought at")]
-    // Don't forget to also change price on button PriceCheck script
-    private int price;
-    [SerializeField]
+
+    public TowerStats stats;
     private string towerName;
     
 
@@ -20,9 +18,6 @@ public class TowerScript : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to enemy tower should be targeting")]
     public GameObject furthestEnemy;
-    [SerializeField]
-    [Tooltip("View radius of tower")]
-    public int range;
     [SerializeField]
     private LayerMask enemyLayer;
     [SerializeField]
@@ -48,7 +43,7 @@ public class TowerScript : MonoBehaviour
         }
     }
     private void FOV() {
-        rangeCheck = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
+        rangeCheck = Physics2D.OverlapCircleAll(transform.position, stats.range, enemyLayer);
         int furthestTargetIndex = 0;
         if (rangeCheck.Length > 0) {
             // assign target to enemy furthest along the path
@@ -91,7 +86,7 @@ public class TowerScript : MonoBehaviour
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, stats.range);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(GetComponent<BoxCollider2D>().bounds.center, 2 * GetComponent<BoxCollider2D>().bounds.extents);
         // if (CanSeeEnemy) {
@@ -102,7 +97,7 @@ public class TowerScript : MonoBehaviour
 
     public int GetPrice()
     {
-        return price;
+        return stats.price;
     }
     public string GetName()
     {

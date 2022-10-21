@@ -16,7 +16,7 @@ public class ArcherTowerScript : MonoBehaviour
     [Header("Tower Stats")]
 
     [SerializeField]
-    TowerStats stats;
+    TowerStats _stats;
 
     // [SerializeField]
     // [Tooltip("Damage of primary attack/projectile")]
@@ -44,19 +44,19 @@ public class ArcherTowerScript : MonoBehaviour
     private void Awake() {
         gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
-        stats = new TowerStats(TowerType.Archer);
+        GetComponent<TowerScript>().stats = new TowerStats(TowerType.Archer);
+        _stats = GetComponent<TowerScript>().stats;
     }
     void Start()
     {
         towerScript = GetComponent<TowerScript>();
-        towerScript.range = stats.range;
         StartCoroutine(AttackRoutine());
     }
 
     private IEnumerator AttackRoutine()
     {
 
-        WaitForSeconds wait = new WaitForSeconds(1 / stats.attackSpeed);
+        WaitForSeconds wait = new WaitForSeconds(1 / _stats.attackSpeed);
         
         while (true)
         {
@@ -74,7 +74,7 @@ public class ArcherTowerScript : MonoBehaviour
     {
         GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
         ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
-        projectileScript.setValues(towerScript, stats, projectileSpeed);
+        projectileScript.setValues(towerScript, _stats, projectileSpeed);
 
     }
 
