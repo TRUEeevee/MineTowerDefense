@@ -10,7 +10,6 @@ public class ArcherUpgradeModule
     int upgradePrice;
     TowerStats statUpgrades;
     float projectileSpeed;
-     
 }
 
 
