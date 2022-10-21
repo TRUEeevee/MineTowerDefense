@@ -16,26 +16,26 @@ public class ArcherTowerScript : MonoBehaviour
     [Header("Tower Stats")]
 
     [SerializeField]
-    [Tooltip("Damage of primary attack/projectile")]
-    private int attackDamage;
+    TowerStats stats;
 
-    [SerializeField]
-    [Tooltip("How many attacks per second tower can perform")]
-    private float attackSpeed;
+    // [SerializeField]
+    // [Tooltip("Damage of primary attack/projectile")]
+    // private int attackDamage;
 
-    [SerializeField]
-    [Tooltip("How many enemies the projectile goes through")]
-    private int pierceNum;
-    [SerializeField]
-    [Tooltip("Detection range of tower")]
-    private int towerRange;
+    // [SerializeField]
+    // [Tooltip("How many attacks per second tower can perform")]
+    // private float attackSpeed;
+
+    // [SerializeField]
+    // [Tooltip("How many enemies the projectile goes through")]
+    // private int pierceNum;
+    // [SerializeField]
+    // [Tooltip("Detection range of tower")]
+    // private int towerRange;
 
     [SerializeField]
     [Tooltip("How fast the arrow/projectile moves")]
-    private int projectileSpeed;
-    [SerializeField]
-    [Tooltip("Amount of armor piercing tower currently has")]
-    private float armorPierce;
+    private float projectileSpeed;
 
     private GameObject lastTowerClicked;
 
@@ -44,18 +44,19 @@ public class ArcherTowerScript : MonoBehaviour
     private void Awake() {
         gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
+        stats = new TowerStats(TowerType.Archer);
     }
     void Start()
     {
         towerScript = GetComponent<TowerScript>();
-        towerScript.range = towerRange;
+        towerScript.range = stats.range;
         StartCoroutine(AttackRoutine());
     }
 
     private IEnumerator AttackRoutine()
     {
 
-        WaitForSeconds wait = new WaitForSeconds(1 / attackSpeed);
+        WaitForSeconds wait = new WaitForSeconds(1 / stats.attackSpeed);
         
         while (true)
         {
@@ -73,15 +74,12 @@ public class ArcherTowerScript : MonoBehaviour
     {
         GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
         ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
-        projectileScript.towerScript = towerScript;
-        projectileScript.damage = attackDamage;
-        projectileScript.pierceNum = pierceNum;
-        projectileScript.speed = projectileSpeed;
+        projectileScript.setValues(towerScript, stats, projectileSpeed);
 
     }
 
     void Update() {
-        // print(towerScript.GetPrice());
+        
     }
 
     private void OnMouseDown() {

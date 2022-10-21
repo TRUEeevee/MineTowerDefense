@@ -391,6 +391,7 @@ MonoBehaviour:
   currentState: 0
   FastForward: 0
   projectileParent: {fileID: 0}
+  lastClickedTower: {fileID: 0}
   pauseMenu: {fileID: 1108184335}
   musicSlider: {fileID: 3549034691837649167}
   sfxSlider: {fileID: 820660632}
@@ -594,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135c5306ca54e784295dc9562e8dad8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrice: 10
+  towerPrice: 150
 --- !u!114 &204480183
 MonoBehaviour:
   m_ObjectHideFlags: 0

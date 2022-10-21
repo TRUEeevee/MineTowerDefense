@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerUpgrade
+// each object/instance of this class will be a single upgrade module, a list/array of them will be an upgrade path
+public class ArcherUpgradeModule
 {
     // once idle mechanics are made, prices wil change to multiple resources rather than currency
-    // Dictionary<string, int> upgradePrices = new Dictionary<string, int>();
+    // Dictionary<string, int> upgradePrices = new Dictionary<string, int>(); or its own class?
     int upgradePrice;
-    Dictionary<string, int> statUpgrade = new Dictionary<string, int>();
+    TowerStats statUpgrades;
+    float projectileSpeed;
+     
 }
 
 
@@ -18,6 +21,8 @@ public class TowerUpgrade
 
     Various resources are the cost of the upgrades obtained via idle path (until idle mechanics are made, only currency will be used for upgrading)
     In addition to these upgrade paths, enchantment(s) can be put onto the towers via lapis and exp (currency)
+
+    See MineTowerDefense DMs for upgrade paths
 
     
 

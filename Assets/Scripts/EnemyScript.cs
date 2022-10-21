@@ -101,7 +101,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TakeDamage(collision.gameObject.GetComponent<ArrowScript>().damage);
+        TakeDamage(collision.gameObject.GetComponent<ArrowScript>()._damage);
     }
 
 

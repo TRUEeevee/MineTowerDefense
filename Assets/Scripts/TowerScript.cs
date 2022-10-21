@@ -34,6 +34,7 @@ public class TowerScript : MonoBehaviour
     void Start()
     {
         enemyLayer = LayerMask.GetMask("Enemy");
+        
         StartCoroutine(FOVCheck());
     }
 
