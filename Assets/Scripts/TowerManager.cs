@@ -24,7 +24,7 @@ public class TowerManager : MonoBehaviour
 
     // Reference to button clicked
     [SerializeField]
-    private GameObject towerButton, archerButton, swordButton, grieferButton;
+    private GameObject towerButton, archerButton, meleeButton, grieferButton;
 
     private enum PlaceCode {
         Placed,
@@ -37,7 +37,7 @@ public class TowerManager : MonoBehaviour
         mc = FindObjectOfType<MapController>();
 
         archerButton = GameObject.Find("ArcherTowerButton"); 
-        swordButton = GameObject.Find("SwordTowerButton");
+        meleeButton = GameObject.Find("MeleeTowerButton");
         grieferButton = GameObject.Find("GrieferTowerButton");
     }
 
@@ -47,8 +47,8 @@ public class TowerManager : MonoBehaviour
             case "BowTower":
                 towerButton = archerButton;
                 break;
-            case "SwordTower":
-                towerButton = swordButton;
+            case "MeleeTower":
+                towerButton = meleeButton;
                 break;
             case "GrieferTower":
                 towerButton = grieferButton;

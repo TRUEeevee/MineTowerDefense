@@ -7,8 +7,9 @@ TagManager:
   - PathBound Beacon
   - Enemy
   - BowTower
-  - SwordTower
   - GrieferTower
+  - Undefined
+  - MeleeTower
   layers:
   - Default
   - TransparentFX

@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 37098570}
   - component: {fileID: 37098573}
   m_Layer: 5
-  m_Name: SwordTowerButton
+  m_Name: MeleeTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,12 +208,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 185755942}
+      - m_Target: {fileID: 43901829}
         m_TargetAssemblyTypeName: TowerManager, Assembly-CSharp
         m_MethodName: TowerButtonPress
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1833053313842242642, guid: bb5631b80b950b6438652cf85c12c5a8,
+          m_ObjectArgument: {fileID: 7132796936160923574, guid: 62b304eb32976714f85f04314ec2e3a2,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135c5306ca54e784295dc9562e8dad8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrice: 10
+  towerPrice: 100
 --- !u!1 &43901827
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 43901828}
   - component: {fileID: 43901829}
   m_Layer: 0
-  m_Name: SwordTower
+  m_Name: MeleeTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum TowerType{
     Archer,
-    Sword,
+    Melee,
     Grief
 }
 
@@ -37,7 +37,7 @@ public class TowerStats
                 _attackDamage = 50;
                 _pierce = 1;
                 break;
-            case TowerType.Sword:
+            case TowerType.Melee:
                 _price = 100;
                 _range = 1;
                 _attackSpeed = 5;
