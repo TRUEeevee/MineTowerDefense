@@ -318,9 +318,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 0
   towerButton: {fileID: 0}
-  archerButton: {fileID: 0}
-  swordButton: {fileID: 0}
-  grieferButton: {fileID: 0}
+  archerButton: {fileID: 204480180}
+  meleeButton: {fileID: 37098568}
+  grieferButton: {fileID: 1036691897}
 --- !u!1 &56373618
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   price: 0
   towerButton: {fileID: 0}
   archerButton: {fileID: 0}
-  swordButton: {fileID: 0}
+  meleeButton: {fileID: 0}
   grieferButton: {fileID: 0}
 --- !u!4 &185755943
 Transform:
