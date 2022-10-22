@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // each object/instance of this class will be a single upgrade module, a list/array of them will be an upgrade path
-public class ArcherUpgradeModule
+public class ArcherUpgradeModule : MonoBehaviour
 {
     // once idle mechanics are made, prices wil change to multiple resources rather than currency
     // Dictionary<string, int> upgradePrices = new Dictionary<string, int>(); or its own class?
