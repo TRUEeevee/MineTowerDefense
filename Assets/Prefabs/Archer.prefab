@@ -1324,10 +1324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06733464f0fc49841921f2b578541d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 150
-  towerName: Bow and Arrow tower
   furthestEnemy: {fileID: 0}
-  range: 4
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1618,7 +1615,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1743733939
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.34509805}

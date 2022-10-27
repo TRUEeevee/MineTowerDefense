@@ -17,32 +17,13 @@ public class MeleeTowerScript : MonoBehaviour
     [SerializeField]
     TowerStats _stats;
 
-    // [SerializeField]
-    // [Tooltip("Damage of primary attack/projectile")]
-    // private int attackDamage;
-
-    // [SerializeField]
-    // [Tooltip("How many attacks per second tower can perform")]
-    // private float attackSpeed;
-
-    // [SerializeField]
-    // [Tooltip("How many enemies the projectile goes through")]
-    // private int pierceNum;
-    // [SerializeField]
-    // [Tooltip("Detection range of tower")]
-    // private int towerRange;
-
     [SerializeField]
-    [Tooltip("How fast the arrow/projectile moves")]
-    private float projectileSpeed;
+    bool singleTarget = true;
 
     private GameObject lastTowerClicked;
 
-    private GameObject projectileParent;
-
     private void Awake() {
         gm = FindObjectOfType<GameManager>();
-        // projectileParent = GameObject.Find("ProjectileParent");
         GetComponent<TowerScript>().stats = new TowerStats(TowerType.Melee);
         _stats = GetComponent<TowerScript>().stats;
     }
@@ -60,7 +41,10 @@ public class MeleeTowerScript : MonoBehaviour
         while (true)
         {
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy) {
-                Attack();
+                if (singleTarget)
+                    SingleAttack();
+                else
+                    MultiAttack();
                 // GetComponent<Animator>().Play("ArcherAttack");
             }
                 
@@ -69,12 +53,17 @@ public class MeleeTowerScript : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        // GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
-        // ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
-        // projectileScript.setValues(towerScript, _stats, projectileSpeed);
+    private void SingleAttack() {
+        Attack(1);
+    }
 
+    private void MultiAttack() {
+        Attack(3);
+    }
+
+    private void Attack(int num) {
+        // towerScript.furthestEnemy;
+        // Physics2D.BoxCast(towerScript.furthestEnemy.transform.position, )
     }
 
     void Update() {

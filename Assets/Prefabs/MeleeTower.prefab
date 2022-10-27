@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 7132796936160923529}
   - component: {fileID: 6794258203428744473}
   - component: {fileID: 5307704369846122068}
-  - component: {fileID: -2784197673815656505}
+  - component: {fileID: 4350270323550975954}
   m_Layer: 9
   m_Name: MeleeTower
   m_TagString: MeleeTower
@@ -531,7 +531,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1867008, y: 3.294869}
   m_EdgeRadius: 0
---- !u!114 &-2784197673815656505
+--- !u!114 &4350270323550975954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,9 +540,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7132796936160923574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94ddfd386469814d8d0b8ffcb16334d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f72712c994125f46a41af1427ff4590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerScript: {fileID: 0}
+  gm: {fileID: 0}
+  arrow: {fileID: 0}
+  singleTarget: 1
+  projectileSpeed: 0
 --- !u!1 &7132796936303814052
 GameObject:
   m_ObjectHideFlags: 0
