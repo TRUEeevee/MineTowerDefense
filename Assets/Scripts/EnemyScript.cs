@@ -101,6 +101,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // change to switch statement 
         TakeDamage(collision.gameObject.GetComponent<ArrowScript>()._damage);
     }
 

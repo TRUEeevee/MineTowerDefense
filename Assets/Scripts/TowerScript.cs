@@ -47,7 +47,7 @@ public class TowerScript : MonoBehaviour
         int furthestTargetIndex = 0;
         if (rangeCheck.Length > 0) {
             // assign target to enemy furthest along the path
-            for (int i = 1; i < rangeCheck.Length; i++) {
+            for (int i = 0; i < rangeCheck.Length; i++) {
                 if (enemyVisible(rangeCheck[i].gameObject.transform)) 
                 {
                     if (rangeCheck[i].GetComponentInParent<EnemyScript>().GetDistance() > rangeCheck[furthestTargetIndex].GetComponentInParent<EnemyScript>().GetDistance())

@@ -39,9 +39,9 @@ public class TowerStats
                 break;
             case TowerType.Melee:
                 _price = 100;
-                _range = 1;
-                _attackSpeed = 5;
-                _attackDamage = 35;
+                _range = 2;
+                _attackSpeed = 4;
+                _attackDamage = 55;
                 _pierce = 0;
                 break;
             case TowerType.Grief:
