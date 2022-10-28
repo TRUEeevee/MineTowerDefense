@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a95a5a0ee1ac44f48bddb9992ee9f59f
+guid: 31e7390b121a42646a27ef33a6ceecf4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,253 +116,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vindicator_0
+      name: Zombie 1_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 351
-        width: 115
-        height: 152
+        x: 7
+        y: 298
+        width: 211
+        height: 190
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8bd391342eb294499da89bfbb04433c
-      internalID: 1878214277
+      spriteID: 68deb33d4daaf414b92fc350025bc1c6
+      internalID: 468320917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vindicator_1
+      name: Zombie 1_1
       rect:
         serializedVersion: 2
-        x: 138
-        y: 356
-        width: 43
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecf7e53119e86134f94063cbd541b0ee
-      internalID: -1170905079
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_2
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 314
+        x: 229
+        y: 287
         width: 114
-        height: 194
+        height: 209
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08b510ee973d78b4186bf6c42eda4f96
-      internalID: -1059073610
+      spriteID: a82036275df4dd046b2966f94d530b0d
+      internalID: 274167149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vindicator_3
+      name: Zombie 1_2
       rect:
         serializedVersion: 2
-        x: 356
-        y: 343
-        width: 57
-        height: 154
+        x: 385
+        y: 319
+        width: 44
+        height: 159
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 890418f7171f3c944a28cf6020eb4b87
-      internalID: -2024581281
+      spriteID: 6ec9ffd27866c644bbb742af01a161b3
+      internalID: 798691142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vindicator_4
+      name: Zombie 1_3
       rect:
         serializedVersion: 2
-        x: 436
-        y: 342
-        width: 61
+        x: 442
+        y: 313
+        width: 59
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4eed5be9911f25458e550a0e4e1e0ed
+      internalID: -2142232321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie 1_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 78
+        width: 181
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5b31ff4f435f342a99c519696a6dfe
+      internalID: 15191543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie 1_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 71
+        width: 56
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ddab46c5d3383478857c510300d2f7
+      internalID: -794600802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie 1_6
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 220
+        width: 167
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f41b747a365fb408afb3f868ed09aa
+      internalID: 1628126249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie 1_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 75
+        width: 48
         height: 124
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 471b383869cd66e45af590ef30d57cd2
-      internalID: 607641120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_5
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 164
-        width: 135
-        height: 169
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0cf80fab73135fb47913cba401c77b97
-      internalID: -754279684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_6
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 121
-        width: 74
-        height: 183
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95070928053450e4686df69a1fa65f2a
-      internalID: 788203034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_7
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 139
-        width: 65
-        height: 147
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f70db156cb68d4346a733933cc4e6be7
-      internalID: 343495853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_8
-      rect:
-        serializedVersion: 2
-        x: 375
-        y: 211
-        width: 134
-        height: 112
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c70a1eb7efa04c4a82b98f4c5673bd0
-      internalID: -690693233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_9
-      rect:
-        serializedVersion: 2
-        x: 381
-        y: 206
-        width: 5
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f93f3631341a01e4aad471bd0129ad70
-      internalID: 877044450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_10
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 77
-        width: 76
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c146e5d7c0b22541be5eb80d6766cc5
-      internalID: -1186788642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vindicator_12
-      rect:
-        serializedVersion: 2
-        x: 375
-        y: 78
-        width: 54
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94b645ec51c8c544f9e8349b6f37b924
-      internalID: -1153737915
+      spriteID: f3506b9206355a24faddb23a748db088
+      internalID: 1014835455
       vertices: []
       indices: 
       edges: []
@@ -378,20 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Vindicator_13: -660181562
-      Vindicator_0: 1878214277
-      Vindicator_3: -2024581281
-      Vindicator_10: -1186788642
-      Vindicator_12: -1153737915
-      Vindicator_5: -754279684
-      Vindicator_11: -1521321916
-      Vindicator_4: 607641120
-      Vindicator_6: 788203034
-      Vindicator_1: -1170905079
-      Vindicator_8: -690693233
-      Vindicator_2: -1059073610
-      Vindicator_7: 343495853
-      Vindicator_9: 877044450
+      Zombie 1_0: 468320917
+      Zombie 1_6: 1628126249
+      Zombie 1_2: 798691142
+      Zombie 1_5: -794600802
+      Zombie 1_7: 1014835455
+      Zombie 1_1: 274167149
+      Zombie 1_4: 15191543
+      Zombie 1_3: -2142232321
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
