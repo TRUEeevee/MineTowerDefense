@@ -17,8 +17,8 @@ public class MeleeTowerScript : MonoBehaviour
     [SerializeField]
     TowerStats _stats;
 
-    // [SerializeField]
-    // bool singleTarget = true;
+    [SerializeField]
+    bool singleTarget = true;
 
     private GameObject lastTowerClicked;
 
@@ -102,7 +102,6 @@ public class MeleeTowerScript : MonoBehaviour
                 if (circle.activeSelf) {
                     gm.unclickTower();
                 } else {
-                    // get melee upgrade script
                     circle.SetActive(true);
                     Invoke("clicked", 0.1f);
                 }   

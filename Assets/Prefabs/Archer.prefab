@@ -1261,7 +1261,6 @@ GameObject:
   - component: {fileID: 1833053313842242641}
   - component: {fileID: 1833053313842242643}
   - component: {fileID: 5697398905354284706}
-  - component: {fileID: -5019430004335883880}
   m_Layer: 9
   m_Name: Archer
   m_TagString: BowTower
@@ -1349,7 +1348,6 @@ MonoBehaviour:
   towerScript: {fileID: 0}
   gm: {fileID: 0}
   arrow: {fileID: 607344616618917871, guid: 17d54ae636f48bf4d905367c677ac90a, type: 3}
-  upgradeUI: {fileID: 0}
   projectileSpeed: 10
 --- !u!61 &5697398905354284706
 BoxCollider2D:
@@ -1377,25 +1375,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &-5019430004335883880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833053313842242642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d6d46d371a47b4f921d97826c7ad64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  left1: {fileID: 21300000, guid: 6660f687e5284074aaa69082d345a6f7, type: 3}
-  left2: {fileID: 21300000, guid: 4c5f00e2658cbdb47a72601e44b64c85, type: 3}
-  left3: {fileID: 0}
-  right1: {fileID: 21300000, guid: 1a0e53f82e85af54189323b204d66305, type: 3}
-  right2: {fileID: 0}
-  right3: {fileID: 0}
-  unavailable: {fileID: 21300000, guid: 6abdc56ab4ffe4f4f8a460344d37735f, type: 3}
 --- !u!1 &1833053313998802209
 GameObject:
   m_ObjectHideFlags: 0
