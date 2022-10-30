@@ -17,6 +17,9 @@ public class MeleeTowerScript : MonoBehaviour
     [SerializeField]
     TowerStats _stats;
 
+    // [SerializeField]
+    // bool singleTarget = true;
+
     private GameObject lastTowerClicked;
 
     private void Awake() {
@@ -46,6 +49,14 @@ public class MeleeTowerScript : MonoBehaviour
             yield return wait;
         }
     }
+
+    // private void SingleAttack() {
+    //     Attack(_stats.pierce);
+    // }
+
+    // private void MultiAttack() {
+    //     Attack(_stats.pierce);
+    // }
 
     private void Attack(int num) {
         List<RaycastHit2D> hits = new List<RaycastHit2D>();
@@ -91,6 +102,7 @@ public class MeleeTowerScript : MonoBehaviour
                 if (circle.activeSelf) {
                     gm.unclickTower();
                 } else {
+                    // get melee upgrade script
                     circle.SetActive(true);
                     Invoke("clicked", 0.1f);
                 }   

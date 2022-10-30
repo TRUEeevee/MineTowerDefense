@@ -17,21 +17,8 @@ public class ArcherTowerScript : MonoBehaviour
 
     [SerializeField]
     TowerStats _stats;
-
-    // [SerializeField]
-    // [Tooltip("Damage of primary attack/projectile")]
-    // private int attackDamage;
-
-    // [SerializeField]
-    // [Tooltip("How many attacks per second tower can perform")]
-    // private float attackSpeed;
-
-    // [SerializeField]
-    // [Tooltip("How many enemies the projectile goes through")]
-    // private int pierceNum;
-    // [SerializeField]
-    // [Tooltip("Detection range of tower")]
-    // private int towerRange;
+    [SerializeField]
+    private GameObject upgradeUI;
 
     [SerializeField]
     [Tooltip("How fast the arrow/projectile moves")]
@@ -44,6 +31,7 @@ public class ArcherTowerScript : MonoBehaviour
     private void Awake() {
         gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
+        upgradeUI = gm.UpgradeUI;
         GetComponent<TowerScript>().stats = new TowerStats(TowerType.Archer);
         _stats = GetComponent<TowerScript>().stats;
     }
@@ -89,6 +77,7 @@ public class ArcherTowerScript : MonoBehaviour
                 if (circle.activeSelf) {
                     gm.unclickTower();
                 } else {
+                    upgradeUI.SetActive(true);
                     circle.SetActive(true);
                     Invoke("clicked", 0.1f);
                 }   
@@ -98,6 +87,7 @@ public class ArcherTowerScript : MonoBehaviour
 
     private void clicked() {
         gm.lastClickedTower = this.gameObject;
+        GetComponent<ArcherUpgradeModule>().updateButtons();
     }
 
 }

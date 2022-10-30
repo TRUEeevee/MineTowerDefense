@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     public GameObject lastClickedTower = null;
 
     [SerializeField]
-    public GameObject pauseMenu;
+    public GameObject pauseMenu, UpgradeUI, leftButton, rightButton;
     [SerializeField]
     Slider musicSlider, sfxSlider;
 
@@ -105,6 +105,9 @@ public class GameManager : MonoBehaviour
         spawn = GameObject.Find("EnemySpawn").transform;
         enemyParent = GameObject.Find("EnemyParent");
         projectileParent = GameObject.Find("ProjectileParent");
+        UpgradeUI = GameObject.Find("UpgradeUI");
+        leftButton = GameObject.Find("LeftPath");
+        rightButton = GameObject.Find("RightPath");
 
         // set values of needed variables
         roundNum = 1;
@@ -133,6 +136,7 @@ public class GameManager : MonoBehaviour
         SetSFXLevel(options.sfx);
 
         pauseMenu.SetActive(false);
+        UpgradeUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -165,12 +169,12 @@ public class GameManager : MonoBehaviour
 
     }
     private void Update() {
-        if (Input.GetMouseButtonDown(0) && lastClickedTower && !(currentState == GameState.Paused)) {
+        // if a tower was clicked, this will click off the tower
+        // if (Input.GetMouseButtonDown(0) && lastClickedTower && !(currentState == GameState.Paused)) {
             // if (lastClickedTower.transform.GetChild(0).gameObject.activeSelf) {
-            print("unclick");
-            unclickTower();
+            // unclickTower();
             
-        }
+        // }
         if (!placing && Input.GetKeyDown(KeyCode.Escape)) {
             if (currentState == GameState.Paused)
                 Resume();
@@ -180,6 +184,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void unclickTower() {
+        UpgradeUI.SetActive(false);
         lastClickedTower.transform.GetChild(0).gameObject.SetActive(false);
         lastClickedTower = null;
     }
@@ -227,5 +232,30 @@ public class GameManager : MonoBehaviour
 
     public void SetSFXLevel(float sliderValue) {
         sfxMixer.SetFloat("SFX", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void leftUpgrade() {
+        switch(lastClickedTower.tag) {
+            case "BowTower":
+                lastClickedTower.GetComponent<ArcherUpgradeModule>().upgradeLeft();
+                break;
+            case "MeleeTower":
+                break;
+            case "GrieferTower":
+                break;
+
+        }
+    }
+    public void RightUpgrade() {
+        switch(lastClickedTower.tag) {
+            case "BowTower":
+                lastClickedTower.GetComponent<ArcherUpgradeModule>().upgradeRight();
+                break;
+            case "MeleeTower":
+                break;
+            case "GrieferTower":
+                break;
+
+        }
     }
 }
