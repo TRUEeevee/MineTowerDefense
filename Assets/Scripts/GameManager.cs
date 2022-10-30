@@ -101,10 +101,20 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // grab references to neccessary components
+
+        // Round Manager Object
         rm = GetComponentInChildren<RoundManager>();
+
+        // Location to spawn enemies
         spawn = GameObject.Find("EnemySpawn").transform;
+
+        // GameObject that will be parent of all enemies
         enemyParent = GameObject.Find("EnemyParent");
+
+        // GameObject that will be parent of all projectiles
         projectileParent = GameObject.Find("ProjectileParent");
+
+        // reference to Upgrade UI panel and its components
         UpgradeUI = GameObject.Find("UpgradeUI");
         leftButton = GameObject.Find("LeftPath");
         rightButton = GameObject.Find("RightPath");
