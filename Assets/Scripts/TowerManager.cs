@@ -56,7 +56,9 @@ public class TowerManager : MonoBehaviour
         }
         GameObject towerToPlace = Instantiate(towerType, Input.mousePosition, Quaternion.identity);
         gm.placing = true;
-        towerButton.GetComponent<Button>().interactable = false;
+        archerButton.GetComponent<Button>().interactable = false;
+        meleeButton.GetComponent<Button>().interactable = false;
+        grieferButton.GetComponent<Button>().interactable = false;
 
         StartCoroutine(FollowMouse(towerToPlace));
     }
