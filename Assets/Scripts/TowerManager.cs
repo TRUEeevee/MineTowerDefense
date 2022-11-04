@@ -56,9 +56,13 @@ public class TowerManager : MonoBehaviour
         }
         GameObject towerToPlace = Instantiate(towerType, Input.mousePosition, Quaternion.identity);
         gm.placing = true;
-        archerButton.GetComponent<Button>().interactable = false;
-        meleeButton.GetComponent<Button>().interactable = false;
-        grieferButton.GetComponent<Button>().interactable = false;
+        // archerButton.GetComponent<Button>().enabled = false;
+        // meleeButton.GetComponent<Button>().enabled = false;
+        // grieferButton.GetComponent<Button>().enabled = false;
+
+        archerButton.SetActive(false);
+        meleeButton.SetActive(false);
+        grieferButton.SetActive(false);
 
         StartCoroutine(FollowMouse(towerToPlace));
     }
@@ -72,6 +76,9 @@ public class TowerManager : MonoBehaviour
                 case PlaceCode.Delete:
                     Destroy(tower);
                     gm.placing = false;
+                    archerButton.SetActive(true);
+                    meleeButton.SetActive(true);
+                    grieferButton.SetActive(true);
                     yield break;
                 case PlaceCode.Placed:
                     tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
@@ -80,6 +87,9 @@ public class TowerManager : MonoBehaviour
                     gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice());
                     tower.layer = LayerMask.NameToLayer("Tower");
                     gm.placing = false;
+                    archerButton.SetActive(true);
+                    meleeButton.SetActive(true);
+                    grieferButton.SetActive(true);
                     yield break;
             }
             
