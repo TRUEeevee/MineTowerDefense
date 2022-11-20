@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ArcherTowerScript : MonoBehaviour
+public class ArcherTowerScript : MonoBehaviour, IClickableObject
 {
     [SerializeField]
     private TowerScript towerScript;
@@ -70,7 +70,7 @@ public class ArcherTowerScript : MonoBehaviour
         
     }
 
-    private void OnMouseDown() {
+    public void OnClick(Vector3 mousePosition3D) {
         if (!(gm.currentState == GameState.Paused)) {
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer) {
                 GameObject circle = transform.GetChild(0).gameObject;
