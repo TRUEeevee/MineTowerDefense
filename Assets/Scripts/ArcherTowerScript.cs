@@ -28,6 +28,9 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
 
     private GameObject projectileParent;
 
+    [SerializeField]
+    private Animator anim;
+
     private void Awake() {
         gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
@@ -50,6 +53,7 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
         {
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy) {
                 Attack();
+                anim.speed = _stats.attackSpeed * 3;
                 GetComponent<Animator>().Play("ArcherAttack");
             }
                 
@@ -63,6 +67,7 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
         GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
         ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
         projectileScript.setValues(towerScript, _stats, projectileSpeed);
+        
 
     }
 

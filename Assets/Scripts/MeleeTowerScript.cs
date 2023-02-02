@@ -65,7 +65,7 @@ public class MeleeTowerScript : MonoBehaviour
         Physics2D.CircleCast(transform.position, _stats.range, Vector2.zero, filter, hits, 0);
         Vector2 furthestVector = (towerScript.furthestEnemy.transform.position - transform.position).normalized;
         hits.Sort((b, a) => a.collider.gameObject.GetComponent<EnemyScript>().GetDistance().CompareTo(b.collider.gameObject.GetComponent<EnemyScript>().GetDistance()));
-        print(hits.Count);
+        //print(hits.Count);
         foreach (RaycastHit2D hit in hits) {
             if (Vector2.Dot(furthestVector, (hit.collider.transform.position - transform.position).normalized) > 0.5f) {
                 hit.collider.gameObject.GetComponent<EnemyScript>().TakeDamage(_stats.attackDamage);
