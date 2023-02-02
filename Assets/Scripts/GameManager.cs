@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         SetSFXLevel(options.sfx);
 
         pauseMenu.SetActive(false);
-        UpgradeUI.SetActive(false);
+        //UpgradeUI.SetActive(false);   TEMPORARILY DISABLED
     }
 
     // Update is called once per frame

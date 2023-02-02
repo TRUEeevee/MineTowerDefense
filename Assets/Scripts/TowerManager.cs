@@ -24,7 +24,8 @@ public class TowerManager : MonoBehaviour
 
     // Reference to button clicked
     [SerializeField]
-    private GameObject towerButton, archerButton, meleeButton, grieferButton;
+    private GameObject archerButton, meleeButton, grieferButton, towerHub;
+    private GameObject towerButton;
 
     private enum PlaceCode {
         Placed,
@@ -35,10 +36,11 @@ public class TowerManager : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>(); //caching access to the game manager to reference things such as current money, difficulty (which should affect prices)
         mc = FindObjectOfType<MapController>();
-
+        /*
         archerButton = GameObject.Find("ArcherTowerButton"); 
         meleeButton = GameObject.Find("MeleeTowerButton");
         grieferButton = GameObject.Find("GrieferTowerButton");
+        */
     }
 
     public void TowerButtonPress(GameObject towerType)  //called when the towers icon buttons are pressed. Should receive from the button pressed the prefab for tower instanciation.
@@ -60,10 +62,12 @@ public class TowerManager : MonoBehaviour
         // meleeButton.GetComponent<Button>().enabled = false;
         // grieferButton.GetComponent<Button>().enabled = false;
 
+        towerHub.SetActive(false);
+        /*
         archerButton.SetActive(false);
         meleeButton.SetActive(false);
         grieferButton.SetActive(false);
-
+        */
         StartCoroutine(FollowMouse(towerToPlace));
     }
 
@@ -76,9 +80,12 @@ public class TowerManager : MonoBehaviour
                 case PlaceCode.Delete:
                     Destroy(tower);
                     gm.placing = false;
+                    towerHub.SetActive(true);
+                    /*
                     archerButton.SetActive(true);
                     meleeButton.SetActive(true);
                     grieferButton.SetActive(true);
+                    */
                     yield break;
                 case PlaceCode.Placed:
                     tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
@@ -87,9 +94,12 @@ public class TowerManager : MonoBehaviour
                     gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice());
                     tower.layer = LayerMask.NameToLayer("Tower");
                     gm.placing = false;
+                    towerHub.SetActive(true);
+                    /*
                     archerButton.SetActive(true);
                     meleeButton.SetActive(true);
                     grieferButton.SetActive(true);
+                    */
                     yield break;
             }
             
