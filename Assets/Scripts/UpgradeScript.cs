@@ -34,8 +34,8 @@ public class UpgradeScript : MonoBehaviour
     {
         //Grab information from the tower
         selectedTower = tower;
-        stats = tower.GetComponent<TowerStats>(); 
-
+        stats = tower.GetComponent<TowerStats>();
+        //GetComponent<TowerScript>().stats = new TowerStats(TowerType.Archer);
         SetInformation();
 
         //play Open animation

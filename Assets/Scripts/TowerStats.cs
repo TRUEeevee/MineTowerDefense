@@ -10,7 +10,7 @@ public enum TowerType{
 }
 
 // We need to completely overhaul or replace this class me thinks.
-public class TowerStats
+public class TowerStats : MonoBehaviour
 {
     private int _price;
     private int _range;

@@ -9,22 +9,15 @@ public class ArcherTowerScript : MonoBehaviour
     private TowerScript towerScript;
 
     [SerializeField]
-    private GameManager gm;
-
-    [SerializeField]
     private GameObject arrow;
     [Header("Tower Stats")]
 
     [SerializeField]
     TowerStats _stats;
-    [SerializeField]
-    private GameObject upgradeUI;
 
     [SerializeField]
     [Tooltip("How fast the arrow/projectile moves")]
     private float projectileSpeed;
-
-    private GameObject lastTowerClicked;
 
     private GameObject projectileParent;
 
@@ -33,12 +26,10 @@ public class ArcherTowerScript : MonoBehaviour
 
     private void Awake()
     {
-        gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
-        upgradeUI = gm.UpgradeUI;
         GetComponent<TowerScript>().stats = new TowerStats(TowerType.Archer);
 
-        // Create a new script and
+
         _stats = GetComponent<TowerScript>().stats;
     }
     void Start()
@@ -73,26 +64,4 @@ public class ArcherTowerScript : MonoBehaviour
 
     }
 }
-
- /* *************Legacy ***************
-    public void OnClick(Vector3 mousePosition3D) {
-        if (!(gm.currentState == GameState.Paused)) {
-            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer) {
-                GameObject circle = transform.GetChild(0).gameObject;
-                if (circle.activeSelf) {
-                    gm.unclickTower();
-                } else {
-                    upgradeUI.SetActive(true);
-                    circle.SetActive(true);
-                    Invoke("clicked", 0.1f);
-                }   
-            }
-        }
-    }
-
-    private void clicked() {
-        gm.lastClickedTower = this.gameObject;
-        GetComponent<ArcherUpgradeModule>().updateButtons();
-    }
- */
 
