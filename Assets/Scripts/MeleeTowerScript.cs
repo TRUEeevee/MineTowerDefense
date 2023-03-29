@@ -37,14 +37,14 @@ public class MeleeTowerScript : MonoBehaviour
     {
 
         WaitForSeconds wait = new WaitForSeconds(1 / _stats.attackSpeed);
-        
+
         while (true)
         {
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy) {
                 Attack(_stats.pierce);
                 // GetComponent<Animator>().Play("ArcherAttack");
             }
-                
+
 
             yield return wait;
         }
@@ -78,7 +78,7 @@ public class MeleeTowerScript : MonoBehaviour
     }
 
     private void OnDrawGizmos() {
-        
+
         if (towerScript.furthestEnemy) {
             Vector2 enemyVector = (towerScript.furthestEnemy.transform.position - transform.position).normalized;
             Gizmos.color = Color.white;
@@ -91,10 +91,8 @@ public class MeleeTowerScript : MonoBehaviour
         }
     }
 
-    void Update() {
-        
-    }
-
+}
+    /* *************Legacy ***************
     private void OnMouseDown() {
         if (!(gm.currentState == GameState.Paused)) {
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer) {
@@ -111,7 +109,7 @@ public class MeleeTowerScript : MonoBehaviour
     }
 
     private void clicked() {
-        gm.lastClickedTower = this.gameObject;
+        gm.lastClickedTower = this.gameObject;     //This should not be how we handle clicking. We need to basically remove this entirely.
     }
+    */
 
-}

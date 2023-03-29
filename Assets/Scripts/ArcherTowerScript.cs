@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ArcherTowerScript : MonoBehaviour, IClickableObject
+public class ArcherTowerScript : MonoBehaviour
 {
     [SerializeField]
     private TowerScript towerScript;
@@ -31,11 +31,14 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
     [SerializeField]
     private Animator anim;
 
-    private void Awake() {
+    private void Awake()
+    {
         gm = FindObjectOfType<GameManager>();
         projectileParent = GameObject.Find("ProjectileParent");
         upgradeUI = gm.UpgradeUI;
         GetComponent<TowerScript>().stats = new TowerStats(TowerType.Archer);
+
+        // Create a new script and
         _stats = GetComponent<TowerScript>().stats;
     }
     void Start()
@@ -48,15 +51,15 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
     {
 
         WaitForSeconds wait = new WaitForSeconds(1 / _stats.attackSpeed);
-        
+
         while (true)
         {
-            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy) {
+            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && towerScript.CanSeeEnemy && towerScript.furthestEnemy)
+            {
                 Attack();
                 anim.speed = _stats.attackSpeed * 3;
                 GetComponent<Animator>().Play("ArcherAttack");
             }
-                
 
             yield return wait;
         }
@@ -67,14 +70,11 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
         GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
         ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
         projectileScript.setValues(towerScript, _stats, projectileSpeed);
-        
 
     }
+}
 
-    void Update() {
-        
-    }
-
+ /* *************Legacy ***************
     public void OnClick(Vector3 mousePosition3D) {
         if (!(gm.currentState == GameState.Paused)) {
             if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer) {
@@ -94,5 +94,5 @@ public class ArcherTowerScript : MonoBehaviour, IClickableObject
         gm.lastClickedTower = this.gameObject;
         GetComponent<ArcherUpgradeModule>().updateButtons();
     }
+ */
 
-}

@@ -1350,7 +1350,7 @@ MonoBehaviour:
   gm: {fileID: 0}
   arrow: {fileID: 607344616618917871, guid: 17d54ae636f48bf4d905367c677ac90a, type: 3}
   upgradeUI: {fileID: 0}
-  projectileSpeed: 10
+  projectileSpeed: 20
   anim: {fileID: 1833053313842242646}
 --- !u!61 &5697398905354284706
 BoxCollider2D:

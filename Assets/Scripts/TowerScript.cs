@@ -73,8 +73,8 @@ public class TowerScript : MonoBehaviour
         }
     }
 
-    private bool enemyVisible(Transform potentialTarget)
-    {
+    private bool enemyVisible(Transform potentialTarget)    // *******I need this to store the position of its target when it fires relative to itself. The tower needs to be able to face one 
+    {                                                       //        way or the other based on which way its firing.  ***********************************************************************
         Vector2 directionToTarget = (potentialTarget.position - transform.position).normalized;
         float distanceToTarget = Vector2.Distance(transform.position, potentialTarget.position);
         if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleLayer)) {

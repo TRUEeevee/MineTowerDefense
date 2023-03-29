@@ -27,6 +27,14 @@ public class TowerManager : MonoBehaviour
     private GameObject archerButton, meleeButton, grieferButton, towerHub;
     private GameObject towerButton;
 
+    [SerializeField]
+    private TowerStats stats;
+
+    public void GetUpgradeInfo()
+    {
+        // might retire
+    }
+
     private enum PlaceCode {
         Placed,
         Continue,
@@ -126,10 +134,14 @@ public class TowerManager : MonoBehaviour
             return PlaceCode.Continue;
         }
     }
+    // Method to be called when the tower is clicked on. 
+    public void Selected()//This method will:
+    {
+        //* set a trigger for the UpgradeUI to open
 
-    private void FixedUpdate() {
-        
+        //* pass information to the UI                                                                  //Im thinking we do this by calling a method on the UI script that passes this gameobject as reference
+                                                                                                        //this should also allow the UI to call methods and change the tower directly with its upgrades.
+        //* 
     }
 
-    
 }

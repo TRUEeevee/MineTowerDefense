@@ -48,7 +48,7 @@ public class OptionSceneManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()  
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             musicMixer.GetFloat("Music", out options.music);
