@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum TowerType{
+    None,
     Archer,
     Melee,
     Grief
@@ -25,6 +26,18 @@ public class NewTowerScript : MonoBehaviour
     [SerializeField]
     private Collider2D[] rangeCheck;
 
+    // Archer specific variables
+    // this is a reference to an empty game object in the hierarchy to store all projectiles generated to not clutter it up
+    private GameObject projectileParent;
+    
+    // arrow prefab for archer tower
+    [SerializeField]
+    private GameObject arrow;
+
+    // projectile speed of arrow
+    [SerializeField]
+    private float arrowSpeed;
+
 
     /*************************************************
 
@@ -46,22 +59,59 @@ public class NewTowerScript : MonoBehaviour
         // saves enemy layer and starts coroutine to search for enemies
         enemyLayer = LayerMask.GetMask("Enemy");
         StartCoroutine(FOVCheck());
+
+        // even if tower is not archer, set projectile parent
+        projectileParent = GameObject.Find("ProjectileParent");
+    }
+
+    // This function will be called by the tower placer in order to set the type of the tower that is placed and will assign the stats accordingly
+    // Until this function is called, the tower will not be functional
+    public void SetStats(TowerType type) {
+        towerType = type;
+        // initially set to 1, 1 to show available upgrades, once upgraded will be either 2, 0 or 0, 2
+        towerStats._upgradePath = (1, 1);
+        switch (type) {
+            case TowerType.Archer:
+                towerStats.towerName = "Archer";
+                towerStats._range = 4;
+                towerStats._attackDamage = 50;
+                towerStats._attackSpeed = 3;
+                towerStats._pierce = 1;
+                break;
+            case TowerType.Melee:
+                towerStats.towerName = "Melee";
+                towerStats._range = 2;
+                towerStats._attackDamage = 55;
+                towerStats._attackSpeed = 4;
+                towerStats._pierce = 0;
+                break;
+            case TowerType.Grief:
+                towerStats.towerName = "Grief";
+                towerStats._range = 4;
+                towerStats._attackDamage = 50;
+                towerStats._attackSpeed = 3;
+                towerStats._pierce = 0;
+                break;
+        }
     }
 
     // Coroutine to search for enemies, timeout of .2 seconds to allow for code to run
     private IEnumerator FOVCheck()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
-        while (true)
-        {
-            yield return wait;
-            FOV();
+        // None is what the enumerator is set to by default, the coroutine will run only once SetStats() has been called by tower placing script
+        if (towerType != TowerType.None){
+            WaitForSeconds wait = new WaitForSeconds(0.2f);
+            while (true)
+            {
+                yield return wait;
+                FOV();
+            }
         }
     }
 
     // Function coroutine uses to check for enemy within its range
     private void FOV() {
-        rangeCheck = Physics2D.OverlapCircleAll(transform.position, towerStats.range, enemyLayer);
+        rangeCheck = Physics2D.OverlapCircleAll(transform.position, towerStats._range, enemyLayer);
         int furthestTargetIndex = 0;
         if (rangeCheck.Length > 0) {
             // assign target to enemy furthest along the path
@@ -103,6 +153,56 @@ public class NewTowerScript : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    private IEnumerator AttackRoutine()
+    {
+
+        WaitForSeconds wait = new WaitForSeconds(1 / towerStats._attackSpeed);
+
+        while (true)
+        {
+            if ((LayerMask.GetMask("Tower") & 1 << gameObject.layer) == 1 << gameObject.layer && CanSeeEnemy && furthestEnemy)
+            {
+                Attack();
+                // play animation
+                // anim.speed = _stats.attackSpeed * 3;
+                // GetComponent<Animator>().Play("ArcherAttack");
+            }
+
+            yield return wait;
+        }
+    }
+
+    private void Attack() {
+        switch (towerType) {
+            case TowerType.Melee:
+                List<RaycastHit2D> hits = new List<RaycastHit2D>();
+                ContactFilter2D filter = new ContactFilter2D();
+                filter.SetLayerMask(LayerMask.GetMask("Enemy"));
+                Physics2D.CircleCast(transform.position, towerStats._range, Vector2.zero, filter, hits, 0);
+                Vector2 furthestVector = (furthestEnemy.transform.position - transform.position).normalized;
+                hits.Sort((b, a) => a.collider.gameObject.GetComponent<EnemyScript>().GetDistance().CompareTo(b.collider.gameObject.GetComponent<EnemyScript>().GetDistance()));
+                //print(hits.Count);
+                foreach (RaycastHit2D hit in hits) {
+                    if (Vector2.Dot(furthestVector, (hit.collider.transform.position - transform.position).normalized) > 0.5f) {
+                        hit.collider.gameObject.GetComponent<EnemyScript>().TakeDamage(towerStats._attackDamage);
+                        towerStats._pierce--;
+                        if (towerStats._pierce < 0)
+                            break;
+
+                    }
+                }
+                break;
+            case TowerType.Archer:
+                GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
+                ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
+                projectileScript.setValues(towerScript, towerStats, arrowSpeed);
+                break;
+            case TowerType.Grief:
+                break;
+        }
+        
     }
 
     // Update is called once per frame

@@ -9,14 +9,16 @@ public class TowerStats : MonoBehaviour
 
     //each tower afterwards will have access to both reference and change its own stats, based on its upgrades, buffs, and enchants freely.
 
+    // NOTE FOR NATE: Needed to make these variables public because other scripts use them. Unless you wanna make a function that just returns them all :3
     [SerializeField]
-    private int _range, _attackDamage, _pierce, _value;
+    public int _range, _attackDamage, _pierce, _value;
     [SerializeField]
-    private float _attackSpeed ;
+    public float _attackSpeed ;
     [SerializeField]
-    private (int, int) _upgradePath; //tuple containing the state of the selected towers upgrades
+    public (int, int) _upgradePath; //tuple containing the state of the selected towers upgrades
     [SerializeField]
-    private string towerName;
+    public string towerName;
+   
 
     public void IncreaseRange(int amount)//takes an amount and adds to the towers range
     {

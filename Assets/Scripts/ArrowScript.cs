@@ -15,7 +15,7 @@ public class ArrowScript : MonoBehaviour
     public int _pierceNum;
 
     public Vector3 _target;
-    public TowerScript _towerScript;
+    public NewTowerScript _towerScript; // CHANGE THIS WHEN RENAMING NewTowerScript to TowerScript or whatever name it becomes
     private ArcherTowerScript _bowTower;
     private Rigidbody2D _rb;
     private Vector3 _travelAngle;
@@ -46,10 +46,10 @@ public class ArrowScript : MonoBehaviour
         
     }
 
-    public void setValues(TowerScript towerScript, TowerStats stats, float projectileSpeed) {
+    public void setValues(NewTowerScript towerScript, TowerStats stats, float projectileSpeed) {
         _towerScript = towerScript;
-        _damage = stats.attackDamage;
-        _pierceNum = stats.pierce;
+        _damage = stats._attackDamage;
+        _pierceNum = stats._pierce;
         _speed = projectileSpeed;
 
     }
