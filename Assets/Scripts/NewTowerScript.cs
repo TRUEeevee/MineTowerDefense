@@ -197,7 +197,7 @@ public class NewTowerScript : MonoBehaviour
             case TowerType.Archer:
                 GameObject projectile = Instantiate(arrow, transform.position, Quaternion.identity, projectileParent.transform);
                 ArrowScript projectileScript = projectile.GetComponent<ArrowScript>();
-                projectileScript.setValues(towerScript, towerStats, arrowSpeed);
+                projectileScript.setValues(this, towerStats, arrowSpeed);
                 break;
             case TowerType.Grief:
                 break;
