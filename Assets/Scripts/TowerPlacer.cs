@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class TowerManager : MonoBehaviour
+public class TowerPlacer : MonoBehaviour
 {
 
     //Trigger the tower placement method on button press
@@ -28,7 +28,7 @@ public class TowerManager : MonoBehaviour
     private GameObject towerButton;
 
     [SerializeField]
-    private TowerStats stats;
+    public TowerType towerType;
 
     public void GetUpgradeInfo()
     {
@@ -51,20 +51,23 @@ public class TowerManager : MonoBehaviour
         */
     }
 
-    public void TowerButtonPress(GameObject towerType)  //called when the towers icon buttons are pressed. Should receive from the button pressed the prefab for tower instanciation.
+    public void TowerButtonPress(GameObject _towerType)  //called when the towers icon buttons are pressed. Should receive from the button pressed the prefab for tower instanciation.
     {
-        switch (towerType.tag) {
+        switch (_towerType.tag) {
             case "BowTower":
                 towerButton = archerButton;
+                towerType = TowerType.Archer;
                 break;
             case "MeleeTower":
                 towerButton = meleeButton;
+                towerType = TowerType.Melee;
                 break;
             case "GrieferTower":
                 towerButton = grieferButton;
+                towerType = TowerType.Grief;
                 break;
         }
-        GameObject towerToPlace = Instantiate(towerType, Input.mousePosition, Quaternion.identity);
+        GameObject towerToPlace = Instantiate(_towerType, Input.mousePosition, Quaternion.identity);
         gm.placing = true;
         // archerButton.GetComponent<Button>().enabled = false;
         // meleeButton.GetComponent<Button>().enabled = false;
@@ -96,13 +99,16 @@ public class TowerManager : MonoBehaviour
                     */
                     yield break;
                 case PlaceCode.Placed:
-                    tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
-                    tower.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-                    tower.transform.GetChild(0).gameObject.SetActive(false);
+                    Transform childCache = tower.transform.GetChild(0);
+
+                    childCache.GetComponent<SpriteRenderer>().color = whiteTransparent;
+                    childCache.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                    childCache.gameObject.SetActive(false);
                     // gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice()); // HAD TO COMMENT TO FIX MERGE CONFLICT, GETPRICE FUNCTION DOES NOT EXIST
                     tower.layer = LayerMask.NameToLayer("Tower");
                     gm.placing = false;
                     towerHub.SetActive(true);
+                    tower.GetComponent<TowerScript>().SetStats(towerType);
                     /*
                     archerButton.SetActive(true);
                     meleeButton.SetActive(true);

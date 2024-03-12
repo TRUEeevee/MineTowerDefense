@@ -1258,10 +1258,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1833053313842242647}
   - component: {fileID: 1833053313842242646}
-  - component: {fileID: 1833053313842242641}
-  - component: {fileID: 1833053313842242643}
   - component: {fileID: 5697398905354284706}
   - component: {fileID: 1582961741059093579}
+  - component: {fileID: -9213953764349533861}
+  - component: {fileID: -9207417649404035297}
   m_Layer: 9
   m_Name: Archer
   m_TagString: BowTower
@@ -1313,45 +1313,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1833053313842242641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833053313842242642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06733464f0fc49841921f2b578541d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furthestEnemy: {fileID: 0}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  CanSeeEnemy: 0
-  rangeCheck: []
---- !u!114 &1833053313842242643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833053313842242642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd49e26669edf9d4384167365f95ffd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerScript: {fileID: 0}
-  gm: {fileID: 0}
-  arrow: {fileID: 607344616618917871, guid: 17d54ae636f48bf4d905367c677ac90a, type: 3}
-  upgradeUI: {fileID: 0}
-  projectileSpeed: 20
-  anim: {fileID: 1833053313842242646}
 --- !u!61 &5697398905354284706
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1399,6 +1360,49 @@ MonoBehaviour:
   unavailable: {fileID: 21300000, guid: 6abdc56ab4ffe4f4f8a460344d37735f, type: 3}
   leftButton: {fileID: 0}
   rightButton: {fileID: 0}
+--- !u!114 &-9213953764349533861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833053313842242642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1e0c8d05c3bb142b8e9e3deea08bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerStats: {fileID: -9207417649404035297}
+  towerType: 1
+  furthestEnemy: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  CanSeeEnemy: 0
+  rangeCheck: []
+  arrow: {fileID: 607344616618917871, guid: 17d54ae636f48bf4d905367c677ac90a, type: 3}
+  arrowSpeed: 20
+--- !u!114 &-9207417649404035297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833053313842242642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a2235c629dd174486201f6460de73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 4
+  _attackDamage: 1
+  _pierce: 1
+  _value: 0
+  _attackSpeed: 2
+  towerName: 
 --- !u!1 &1833053313998802209
 GameObject:
   m_ObjectHideFlags: 0
