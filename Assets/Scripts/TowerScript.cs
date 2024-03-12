@@ -43,7 +43,7 @@ public class TowerScript : MonoBehaviour
         }
     }
     private void FOV() {
-        rangeCheck = Physics2D.OverlapCircleAll(transform.position, stats.range, enemyLayer);
+        rangeCheck = Physics2D.OverlapCircleAll(transform.position, stats._range, enemyLayer);
         int furthestTargetIndex = 0;
         if (rangeCheck.Length > 0) {
             // assign target to enemy furthest along the path
@@ -86,7 +86,7 @@ public class TowerScript : MonoBehaviour
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, stats.range);
+        Gizmos.DrawWireSphere(transform.position, stats._range);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(GetComponent<BoxCollider2D>().bounds.center, 2 * GetComponent<BoxCollider2D>().bounds.extents);
         // if (CanSeeEnemy) {
@@ -95,10 +95,11 @@ public class TowerScript : MonoBehaviour
         // }
     }
 
-    public int GetPrice()
-    {
-        return stats.price;
-    }
+// HAD TO COMMENT TO FIX MERGE CONFLICTS, PRICE DOES NOT CURRENTLY EXIST
+    // public int GetPrice()
+    // {
+    //     return stats.price;
+    // }
     public string GetName()
     {
         return towerName;

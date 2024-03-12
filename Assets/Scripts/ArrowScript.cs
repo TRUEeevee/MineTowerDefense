@@ -16,7 +16,6 @@ public class ArrowScript : MonoBehaviour
 
     public Vector3 _target;
     public NewTowerScript _towerScript; // CHANGE THIS WHEN RENAMING NewTowerScript to TowerScript or whatever name it becomes
-    private ArcherTowerScript _bowTower;
     private Rigidbody2D _rb;
     private Vector3 _travelAngle;
 

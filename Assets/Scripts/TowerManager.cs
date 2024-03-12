@@ -99,7 +99,7 @@ public class TowerManager : MonoBehaviour
                     tower.transform.GetChild(0).GetComponent<SpriteRenderer>().color = whiteTransparent;
                     tower.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
                     tower.transform.GetChild(0).gameObject.SetActive(false);
-                    gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice());
+                    // gm.SubMoney(tower.GetComponent<TowerScript>().GetPrice()); // HAD TO COMMENT TO FIX MERGE CONFLICT, GETPRICE FUNCTION DOES NOT EXIST
                     tower.layer = LayerMask.NameToLayer("Tower");
                     gm.placing = false;
                     towerHub.SetActive(true);

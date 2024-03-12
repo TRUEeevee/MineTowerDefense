@@ -51,22 +51,26 @@ public class UpgradeScript : MonoBehaviour
 
     private void SetInformation()    //responsible for giving the UI the right information
     {
-        switch (stats.TowerType)   //Set Icons, prices, descriptions based on tower type.
-        {
-            case TowerType.Archer:
-                upgrade1.GetComponentInChildren<Image>().sprite = archerLeftIcons[stats.upgradePath.Item1];
-                upgrade2.GetComponentInChildren<Image>().sprite = archerRightIcons[stats.upgradePath.Item2];
-                break;
+        // TO FIX MERGE CONFLICTS, I COMMENTED THIS OUT UNTIL WE KNOW WHAT WE WANNA DO FOR UPGRADES. CURRENTLY THIS CONTAINS ERRORS
 
-            case TowerType.Melee:
-                upgrade1.GetComponentInChildren<Image>().sprite = meleeLeftIcons[stats.upgradePath.Item1];
-                upgrade2.GetComponentInChildren<Image>().sprite = meleeRightIcons[stats.upgradePath.Item2];
-                break;
 
-            case TowerType.Grief:
-                upgrade1.GetComponentInChildren<Image>().sprite = griefLeftIcons[stats.upgradePath.Item1];
-                upgrade2.GetComponentInChildren<Image>().sprite = griefRightIcons[stats.upgradePath.Item2];
-                break;
-        }
+
+    //     switch (stats.TowerType)   //Set Icons, prices, descriptions based on tower type.
+    //     {
+    //         case TowerType.Archer:
+    //             upgrade1.GetComponentInChildren<Image>().sprite = archerLeftIcons[stats.upgradePath.Item1];
+    //             upgrade2.GetComponentInChildren<Image>().sprite = archerRightIcons[stats.upgradePath.Item2];
+    //             break;
+
+    //         case TowerType.Melee:
+    //             upgrade1.GetComponentInChildren<Image>().sprite = meleeLeftIcons[stats.upgradePath.Item1];
+    //             upgrade2.GetComponentInChildren<Image>().sprite = meleeRightIcons[stats.upgradePath.Item2];
+    //             break;
+
+    //         case TowerType.Grief:
+    //             upgrade1.GetComponentInChildren<Image>().sprite = griefLeftIcons[stats.upgradePath.Item1];
+    //             upgrade2.GetComponentInChildren<Image>().sprite = griefRightIcons[stats.upgradePath.Item2];
+    //             break;
+    //     }
     }
 }
